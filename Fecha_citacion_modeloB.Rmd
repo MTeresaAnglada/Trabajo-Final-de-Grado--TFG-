@@ -1,0 +1,414 @@
+---
+title: "Calculo fecha citación del modelo B segun la programación"
+author: "Maria Teresa Anglada"
+date: "30/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+A partir del Algoritmo_ModeloB.Rmd vamos a calcular cuantos dias quedan para que citen al paciente segun la programación que hemos recibido de los ragiólogos. esta programación la encontramos en las tablas Turnos_RX_Y.csv . 
+
+# Fecha citación de cada paciente
+
+**Una mañana normal tiene 12-13 huecos y una tarde normal 15 huecos**.
+
+Leemos las 6 colas:
+
+```{r}
+Cola_M_R1 = read.csv("tabla_cola_1.csv", header = TRUE)
+Cola_T_R1 = read.csv("tabla_cola_2.csv", header = TRUE)
+Cola_M_R3 = read.csv("tabla_cola_3.csv", header = TRUE)
+Cola_T_R3 = read.csv("tabla_cola_4.csv", header = TRUE)
+Cola_M_R4 = read.csv("tabla_cola_5.csv", header = TRUE)
+Cola_T_R4 = read.csv("tabla_cola_6.csv", header = TRUE)
+```
+
+
+Los que haremos ahora es asignar en la columna Dia_cita el orden en que va a ser atendido ( siendo 1 el primer dia que aparezca en la programación que los radiologos tienen disponibilidad para ese resonador, 2 el segundo dia que aparezca en la programacion que los radiologos tienen disponibilidad de ese resonador etc.).
+
+Esto lo haremos viendo que la suma de los huecos no sobrepase de 12 (ya que son los que hay máximo en cada mañana). Si vemos que el contador no llega a 12 cogeremos el primer paciente que se pueda añadir aunque pase por delante de otro que debería ir antes (sea de la misma prioridad o una por debajo maximo).
+
+### Cola_M_R1
+
+
+```{r}
+t=1 #dia asignado
+contador_huecos=0 #contamos el número de huecos ya ocupados en un dia
+for (i in 1:nrow(Cola_M_R1)){
+  
+  verificar= contador_huecos + Cola_M_R1$HUECOS[i]
+  
+  if(verificar <=12 & Cola_M_R1$Dia_cita[i]==0){
+    
+    Cola_M_R1$Dia_cita[i]= t
+    contador_huecos = verificar
+  }
+  
+
+  if(contador_huecos < 12 & verificar > 12){
+    for (j in (i+1):nrow(Cola_M_R1)){     #para que pase por delante otro paciente con menos huecos
+      
+      verificar1= contador_huecos + Cola_M_R1$HUECOS[j]
+      
+      if(verificar1 == 12 & Cola_M_R1$Dia_cita[j]==0){
+        Cola_M_R1$Dia_cita[j]= t
+        contador_huecos = verificar1
+      }
+    }
+    contador_huecos=0
+  }
+  if(Cola_M_R1$Dia_cita[i]==0){   #ya que si no le ha asignado dia porque el paciente necesitaba mas huecos de los disponibles en ese turno, le asignamos el siguiente antes de que el algoritmo pase al siguiente paciente
+    Cola_M_R1$Dia_cita[i]= t+1
+    contador_huecos= Cola_M_R1$HUECOS[i]
+    t=t+1
+  }
+  
+  if(verificar==12 & contador_huecos==12){
+    contador_huecos=0 #volvemos a empezar la cuenta de huecos
+    t=t+1 #pasamos al siguiente dia
+  }
+  
+}
+```
+
+
+### Cola_M_R4
+
+```{r}
+
+t=1 #dia asignado
+contador_huecos=0
+verificar1=0
+verificar=0
+for (i in 1:nrow(Cola_M_R4)){
+  
+  verificar= contador_huecos + Cola_M_R4$HUECOS[i]
+  
+  if(verificar <=12 & Cola_M_R4$Dia_cita[i]==0){
+    
+    Cola_M_R4$Dia_cita[i]= t
+    contador_huecos = verificar
+  }
+  
+
+  if(contador_huecos < 12 & verificar > 12){
+    for (j in (i+1):nrow(Cola_M_R4)){     #para que pase por delante otro paciente con menos huecos
+      
+      verificar1= contador_huecos + Cola_M_R4$HUECOS[j]
+      
+      if(verificar1 == 12 & Cola_M_R4$Dia_cita[j]==0){
+        Cola_M_R4$Dia_cita[j]= t
+        contador_huecos = verificar1
+      }
+    }
+    contador_huecos=0
+  }
+  if(Cola_M_R4$Dia_cita[i]==0){   #ya que si no le ha asignado dia porque el paciente necesitaba mas huecos de los disponibles en ese turno, le asignamos el siguiente antes de que el algoritmo pase al siguiente paciente
+    Cola_M_R4$Dia_cita[i]= t+1
+    contador_huecos= Cola_M_R4$HUECOS[i]
+    t=t+1
+  }
+  
+  if(verificar==12 & contador_huecos==12){
+    contador_huecos=0 #volvemos a empezar la cuenta de huecos
+    t=t+1 #pasamos al siguiente dia
+  }
+  
+}
+```
+
+
+### Cola_T_R1
+
+```{r}
+t=1 #dia asignado
+contador_huecos=0
+verificar1=0
+verificar=0
+for (i in 1:nrow(Cola_T_R1)){
+  
+  verificar= contador_huecos + Cola_T_R1$HUECOS[i]
+  
+  if(verificar <=15 & Cola_T_R1$Dia_cita[i]==0){
+    
+    Cola_T_R1$Dia_cita[i]= t
+    contador_huecos = verificar
+  }
+  
+
+  if(contador_huecos < 15 & verificar > 15){
+    for (j in (i+1):nrow(Cola_T_R1)){     #para que pase por delante otro paciente con menos huecos
+      
+      verificar1= contador_huecos + Cola_T_R1$HUECOS[j]
+      
+      if(verificar1 == 15 & Cola_T_R1$Dia_cita[j]==0){
+        Cola_T_R1$Dia_cita[j]= t
+        contador_huecos = verificar1
+      }
+    }
+    contador_huecos=0
+  }
+  if(Cola_T_R1$Dia_cita[i]==0){   #ya que si no le ha asignado dia porque el paciente necesitaba mas huecos de los disponibles en ese turno, le asignamos el siguiente antes de que el algoritmo pase al siguiente paciente
+    Cola_T_R1$Dia_cita[i]= t+1
+    contador_huecos= Cola_T_R1$HUECOS[i]
+    t=t+1
+  }
+  
+  if(verificar==15 & contador_huecos==15){
+    contador_huecos=0 #volvemos a empezar la cuenta de huecos
+    t=t+1 #pasamos al siguiente dia
+  }
+  
+}
+```
+
+
+### Cola_T_R3
+
+```{r}
+t=1 #dia asignado
+contador_huecos=0
+verificar1=0
+verificar=0
+for (i in 1:nrow(Cola_T_R3)){
+  
+  verificar= contador_huecos + Cola_T_R3$HUECOS[i]
+  
+  if(verificar <=15 & Cola_T_R3$Dia_cita[i]==0){
+    
+    Cola_T_R3$Dia_cita[i]= t
+    contador_huecos = verificar
+  }
+  
+
+  if(contador_huecos < 15 & verificar > 15){
+    for (j in (i+1):nrow(Cola_T_R3)){     #para que pase por delante otro paciente con menos huecos
+      
+      verificar1= contador_huecos + Cola_T_R3$HUECOS[j]
+      
+      if(verificar1 == 15 & Cola_T_R3$Dia_cita[j]==0){
+        Cola_T_R3$Dia_cita[j]= t
+        contador_huecos = verificar1
+      }
+    }
+    contador_huecos=0
+  }
+  if(Cola_T_R3$Dia_cita[i]==0){   #ya que si no le ha asignado dia porque el paciente necesitaba mas huecos de los disponibles en ese turno, le asignamos el siguiente antes de que el algoritmo pase al siguiente paciente
+    Cola_T_R3$Dia_cita[i]= t+1
+    contador_huecos= Cola_T_R3$HUECOS[i]
+    t=t+1
+  }
+  
+  if(verificar==15 & contador_huecos==15){
+    contador_huecos=0 #volvemos a empezar la cuenta de huecos
+    t=t+1 #pasamos al siguiente dia
+  }
+  
+}
+```
+
+
+### Cola_T_R4
+
+```{r}
+t=1 #dia asignado
+contador_huecos=0
+verificar1=0
+verificar=0#contamos el número de huecos ya ocupados en un dia
+for (i in 1:nrow(Cola_T_R4)){
+  
+  verificar= contador_huecos + Cola_T_R4$HUECOS[i]
+  
+  if(verificar <=15 & Cola_T_R4$Dia_cita[i]==0){
+    
+    Cola_T_R4$Dia_cita[i]= t
+    contador_huecos = verificar
+  }
+  
+
+  if(contador_huecos < 15 & verificar > 15){
+    for (j in (i+1):nrow(Cola_T_R4)){     #para que pase por delante otro paciente con menos huecos
+      
+      verificar1= contador_huecos + Cola_T_R4$HUECOS[j]
+      
+      if(verificar1 == 15 & Cola_T_R4$Dia_cita[j]==0){
+        Cola_T_R4$Dia_cita[j]= t
+        contador_huecos = verificar1
+      }
+    }
+    contador_huecos=0
+  }
+  if(Cola_T_R4$Dia_cita[i]==0){   #ya que si no le ha asignado dia porque el paciente necesitaba mas huecos de los disponibles en ese turno, le asignamos el siguiente antes de que el algoritmo pase al siguiente paciente
+    Cola_T_R4$Dia_cita[i]= t+1
+    contador_huecos= Cola_T_R4$HUECOS[i]
+    t=t+1
+  }
+  
+  if(verificar==15 & contador_huecos==15){
+    contador_huecos=0 #volvemos a empezar la cuenta de huecos
+    t=t+1 #pasamos al siguiente dia
+  }
+  
+}
+```
+
+
+### Cola_M_R3
+
+```{r}
+t=1 #dia asignado
+contador_huecos=0 #contamos el número de huecos ya ocupados en un dia
+for (i in 1:nrow(Cola_M_R3)){
+  
+  verificar= contador_huecos + Cola_M_R3$HUECOS[i]
+  
+  if(verificar <=12 & Cola_M_R3$Dia_cita[i]==0){
+    
+    Cola_M_R3$Dia_cita[i]= t
+    contador_huecos = verificar
+  }
+  
+
+  if(contador_huecos < 12 & verificar > 12){
+    for (j in (i+1):nrow(Cola_M_R3)){     #para que pase por delante otro paciente con menos huecos
+      
+      verificar1= contador_huecos + Cola_M_R3$HUECOS[j]
+      
+      if(verificar1 == 12 & Cola_M_R3$Dia_cita[j]==0){
+        Cola_M_R3$Dia_cita[j]= t
+        contador_huecos = verificar1
+      }
+    }
+    contador_huecos=0
+  }
+  if(Cola_M_R3$Dia_cita[i]==0){   #ya que si no le ha asignado dia porque el paciente necesitaba mas huecos de los disponibles en ese turno, le asignamos el siguiente antes de que el algoritmo pase al siguiente paciente
+    Cola_M_R3$Dia_cita[i]= t+1
+    contador_huecos= Cola_M_R3$HUECOS[i]
+    t=t+1
+  }
+  
+  if(verificar==12 & contador_huecos==12){
+    contador_huecos=0 #volvemos a empezar la cuenta de huecos
+    t=t+1 #pasamos al siguiente dia
+  }
+  
+}
+
+```
+
+Contamos cuantos dias quedan para que sea el turno de la Cola_Y_RX y añadir columna en cada una de las 6 colas. Para cada Dia_cita ponemos los dias que quedan a ese paciente para que sea atendido segun la programación mandada por los radiólogos.
+
+Para ello leeos la tabla Turno_RX_Y donde aparece el orden del dia disponible y cuantos dias quedan para que toque ese orden. Haremos un inner join de las tablas Cola_Y_RX y Turno_RX_Y para así tener para cada paciente cuantos dias le quedan para ser atendido.
+
+```{r}
+Turno_R1_M=read.csv("Turnos_R1_M.csv", header = TRUE, sep = ";")
+Turno_R1_T=read.csv("Turnos_R1_T.csv", header = TRUE, sep = ";")
+Turno_R3_M=read.csv("Turnos_R3_M.csv", header = TRUE, sep = ";")
+Turno_R3_T=read.csv("Turnos_R3_T.csv", header = TRUE, sep = ";")
+Turno_R4_M=read.csv("Turnos_R4_M.csv", header = TRUE, sep = ";")
+Turno_R4_T=read.csv("Turnos_R4_T.csv", header = TRUE, sep = ";")
+
+```
+
+```{r}
+Cola_M_R1= Cola_M_R1 %>% left_join(Turno_R1_M, by= "Dia_cita")
+Cola_T_R1= Cola_T_R1 %>% left_join(Turno_R1_T, by= "Dia_cita")
+Cola_M_R3= Cola_M_R3 %>% left_join(Turno_R3_M, by= "Dia_cita")
+Cola_T_R3= Cola_T_R3 %>% left_join(Turno_R3_T, by= "Dia_cita")
+Cola_M_R4= Cola_M_R4 %>% left_join(Turno_R4_M, by= "Dia_cita")
+Cola_T_R4= Cola_T_R4 %>% left_join(Turno_R4_T, by= "Dia_cita")
+```
+
+Quitamos las columnas que no nos interesan
+
+```{r}
+Cola_M_R1= Cola_M_R1 %>% select(ID,PRIORIDAD, COTMES, DIAS_CEX, DIAS_PETICION, ROSSELLO, DIAS_PARA_SER_ATENDIDO)
+Cola_T_R1= Cola_T_R1 %>% select(ID,PRIORIDAD, COTMES, DIAS_CEX, DIAS_PETICION, ROSSELLO, DIAS_PARA_SER_ATENDIDO)
+Cola_M_R3= Cola_M_R3 %>% select(ID,PRIORIDAD, COTMES, DIAS_CEX, DIAS_PETICION, ROSSELLO, DIAS_PARA_SER_ATENDIDO)
+Cola_T_R3= Cola_T_R3 %>% select(ID,PRIORIDAD, COTMES, DIAS_CEX, DIAS_PETICION, ROSSELLO, DIAS_PARA_SER_ATENDIDO)
+Cola_M_R4= Cola_M_R4 %>% select(ID,PRIORIDAD, COTMES, DIAS_CEX, DIAS_PETICION, ROSSELLO, DIAS_PARA_SER_ATENDIDO)
+Cola_T_R4= Cola_T_R4 %>% select(ID,PRIORIDAD, COTMES, DIAS_CEX, DIAS_PETICION, ROSSELLO, DIAS_PARA_SER_ATENDIDO)
+
+```
+
+```{r}
+head(Cola_M_R1, 15)
+head(Cola_T_R4, 18)
+```
+
+Ahora ya sabemos cuantos dias le quedan a cada paciente para ser atendido. Quitamos los pacientes repetidos y dejaremos el orden que los atienda antes a cada uno. (Tambien hay que quitar los de P3 que se repitan en los turnos de mañana y tarde, dejandolos en los turnos donde se atiendan antes). Despues guardamos cada tabla en un csv para en otro RMD hacer los calculos de la tardanza.
+
+## IDEA
+La idea seria añadir columna en cada data que indique del 1 al 6 en que cola estaba, luego juntar todo en un mismo data, ordenar segun DIAS_PARA_SER_ATENDIDO y luego aplicar lo siguiente
+
+tabla %>% distinct(ID, .keep_all = TRUE)
+
+otra opcion: tabla %>% group_by(ID) %>% slice(1)
+
+Que conserva el primer paciente que encuentra y no esta repetido ( asi quitamos los pacientes repetidos que van a ser atendidos despues). Despues volvemos a separar los pacientes en 6 colas como estaban y ordenamos segun DIAS_PARA_SER_ATENDIDO.
+
+```{r}
+Cola_M_R1= Cola_M_R1 %>% mutate(Cola_nueva = "1")
+Cola_T_R1= Cola_T_R1 %>% mutate(Cola_nueva = "2")
+Cola_M_R3= Cola_M_R3 %>% mutate(Cola_nueva = "3")
+Cola_T_R3= Cola_T_R3 %>% mutate(Cola_nueva = "4")
+Cola_M_R4= Cola_M_R4 %>% mutate(Cola_nueva = "5")
+Cola_T_R4= Cola_T_R4 %>% mutate(Cola_nueva = "6")
+```
+
+```{r}
+tabla= Cola_M_R1 %>% bind_rows(Cola_T_R1) %>% bind_rows(Cola_M_R3) %>% bind_rows(Cola_T_R3) %>% bind_rows(Cola_M_R4) %>% bind_rows(Cola_T_R4) %>% arrange(DIAS_PARA_SER_ATENDIDO) %>% distinct(ID, .keep_all = TRUE)
+```
+
+```{r}
+Cola_M_R1 = tabla %>% filter(Cola_nueva == "1") %>% arrange(DIAS_PARA_SER_ATENDIDO)
+Cola_T_R1 = tabla %>% filter(Cola_nueva == "2") %>% arrange(DIAS_PARA_SER_ATENDIDO)
+Cola_M_R3 = tabla %>% filter(Cola_nueva == "3") %>% arrange(DIAS_PARA_SER_ATENDIDO)
+Cola_T_R3 = tabla %>% filter(Cola_nueva == "4") %>% arrange(DIAS_PARA_SER_ATENDIDO)
+Cola_M_R4 = tabla %>% filter(Cola_nueva == "5") %>% arrange(DIAS_PARA_SER_ATENDIDO)
+Cola_T_R4 = tabla %>% filter(Cola_nueva == "6") %>% arrange(DIAS_PARA_SER_ATENDIDO)
+```
+
+Ahora tenemos un único paciente en cada cola.
+
+Quitamos los pacientes que no van a poder ser atendidos
+
+```{r}
+Cola_M_R1= Cola_M_R1 %>% na.omit()
+Cola_T_R1= Cola_T_R1 %>% na.omit()
+Cola_M_R3= Cola_M_R3 %>% na.omit()
+Cola_T_R3= Cola_T_R3 %>% na.omit()
+Cola_M_R4= Cola_M_R4 %>% na.omit()
+Cola_T_R4= Cola_T_R4 %>% na.omit()
+```
+
+La cantidad de pacientes que van a poder ser atendidos desde el 6 de agosto hasta el 28 de febrero es
+
+```{r}
+nrow(Cola_M_R1)+nrow(Cola_M_R3)+ nrow(Cola_M_R4)+nrow(Cola_T_R1)+nrow(Cola_T_R3)+ nrow(Cola_T_R4)
+```
+
+```{r}
+nrow(Cola_M_R1)
+nrow(Cola_M_R3)
+nrow(Cola_M_R4)
+nrow(Cola_T_R1)
+nrow(Cola_T_R3)
+nrow(Cola_T_R4)
+```
+
+Despues de todo esto guardamos cada cola en un csv para poder calcular en otro RMD la tardanza media
+
+```{r}
+write.csv(Cola_M_R1, file="Cola_M_R1_modeloB.csv")
+write.csv(Cola_T_R1, file="Cola_T_R1_modeloB.csv")
+write.csv(Cola_M_R3, file="Cola_M_R3_modeloB.csv")
+write.csv(Cola_T_R3, file="Cola_T_R3_modeloB.csv")
+write.csv(Cola_M_R4, file="Cola_M_R4_modeloB.csv")
+write.csv(Cola_T_R4, file="Cola_T_R4_modeloB.csv")
+```
+

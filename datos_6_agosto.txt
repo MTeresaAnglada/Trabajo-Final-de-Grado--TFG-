@@ -1,0 +1,562 @@
+ID	PRIORIDAD	RESONANCIA	TURNO	HUECOS	COTMES	DIAS_PETICION	DIAS_CEX	OBJETIVO_VISITA	TIPO_CITA	PROP_DESDE_PETI
+Paciente 1	1	 1 / 3 / 4	M	1	No	43	23	Diagnostico	EXTREMIDADES	6
+Paciente 2	1	 1 / 3 / 4	M	2	Si	205	64	Seguimiento	EXTREMIDADES	255
+Paciente 3	1	 1 / 3 / 4	M	2	No	131	138	Diagnostico	EXTREMIDADES	255
+Paciente 4	1	 1 / 3 / 4	M	2	No	62	27	Diagnostico	 ABDOMEN Y PELVIS	75
+Paciente 5	1	4	M	2	No	26	3	Seguimiento	EXTREMIDADES	15
+Paciente 6	1	4	M	2	No	24	5	Diagnostico	EXTREMIDADES	15
+Paciente 7	1	4	M	2	No	108	71	Diagnostico	EXTREMIDADES	165
+Paciente 8	1	4	M	2	No	206	158	Diagnostico	EXTREMIDADES	350
+Paciente 9	1	 1 / 3 / 4	M	2	No	374	-195	Diagnostico	EXTREMIDADES	165
+Paciente 10	1	 1 / 3 / 4	M	2	No	46	13	Diagnostico	EXTREMIDADES	45
+Paciente 12	1	 1 / 3 / 4	M	2	No	30	1	Diagnostico	EXTREMIDADES	15
+Paciente 13	1	 1 / 3 / 4	M	2	No	26	3	Diagnostico	EXTREMIDADES	15
+Paciente 14	1	 1 / 3 / 4	M	2	No	360	4	Diagnostico	EXTREMIDADES	350
+Paciente 15	1	 1 / 3 / 4	M	2	No	39	50	Diagnostico	EXTREMIDADES	75
+Paciente 16	1	 1 / 3 / 4	M	2	No	117	62	Seguimiento	EXTREMIDADES	165
+Paciente 17	1	 1 / 3 / 4	M	2	No	83	96	Seguimiento	EXTREMIDADES	165
+Paciente 18	1	 1 / 3 / 4	M	2	Si	241	123	Diagnostico	EXTREMIDADES	350
+Paciente 19	1	 1 / 3 / 4	M	2	No	194	170	Seguimiento	EXTREMIDADES	350
+Paciente 20	1	 1 / 3 / 4	M	2	No	138	226	Diagnostico	EXTREMIDADES	350
+Paciente 21	1	 1 / 3 / 4	M	2	No	117	247	Diagnostico	EXTREMIDADES	350
+Paciente 22	1	 1 / 3 / 4	M	2	No	146	583	Diagnostico	EXTREMIDADES	715
+Paciente 23	1	 1 / 3 / 4	M	2	No	27	152	Seguimiento	EXTREMIDADES	165
+Paciente 148	2	 1 / 3 / 4	M	2	No	144	35	Seguimiento	EXTREMIDADES	165
+Paciente 149	2	 1 / 3 / 4	M	2	No	408	-319	Seguimiento	EXTREMIDADES	75
+Paciente 150	2	 1 / 3 / 4	M	2	No	172	-165	Diagnostico	EXTREMIDADES	0
+Paciente 151	2	3	M	2	No	179	-172	Diagnostico	EXTREMIDADES	0
+Paciente 152	2	 1 / 3	M	2	No	174	115	Diagnostico	COLUMNA	45
+Paciente 153	2	 1 / 3 / 4	M	1	No	97	22	Diagnostico	COLUMNA	105
+Paciente 154	2	 1 / 3 / 4	M	2	Si	496	233	Diagnostico	COLUMNA	715
+Paciente 155	2	 1 / 3 / 4	M	2	Si	304	60	Diagnostico	EXTREMIDADES	350
+Paciente 158	2	 1 / 3 / 4	M	2	Si	542	-178	Diagnostico	EXTREMIDADES	350
+Paciente 159	2	 1 / 3 / 4	M	2	No	50	39	Diagnostico	EXTREMIDADES	75
+Paciente 160	2	 1 / 3 / 4	M	2	No	96	633	Diagnostico	EXTREMIDADES	715
+Paciente 162	2	 1 / 3 / 4	M	2	Si	269	95	Diagnostico	 ABDOMEN Y PELVIS	350
+Paciente 165	2	4	M	2	No	419	-240	Diagnostico	EXTREMIDADES	165
+Paciente 166	2	4	M	1	No	391	-212	Diagnostico	EXTREMIDADES	165
+Paciente 167	2	4	M	2	No	142	53	Diagnostico	EXTREMIDADES	75
+Paciente 168	2	4	M	2	No	185	6	Diagnostico	EXTREMIDADES	165
+Paciente 169	2	4	M	2	No	185	6	Diagnostico	EXTREMIDADES	165
+Paciente 170	2	4	M	2	No	136	43	Diagnostico	EXTREMIDADES	165
+Paciente 171	2	 1 / 3 / 4	M	2	No	194	15	Diagnostico	EXTREMIDADES	165
+Paciente 172	2	4	T	2	Si	509	-450	Diagnostico	EXTREMIDADES	45
+Paciente 173	2	 1 / 3 / 4	M	2	Si	591	-227	Seguimiento	EXTREMIDADES	350
+Paciente 174	2	4	M	1	Si	262	-173	Seguimiento	EXTREMIDADES	75
+Paciente 175	2	4	T	2	Si	215	96	Seguimiento	EXTREMIDADES	105
+Paciente 176	2	3	T	2	Si	451	87	Diagnostico	EXTREMIDADES	350
+Paciente 178	2	  3 / 4	T	2	Si	180	31	Seguimiento	EXTREMIDADES	135
+Paciente 180	2	 1 / 3 / 4	M	2	No	269	0	Seguimiento	EXTREMIDADES	255
+Paciente 181	2	3	T	2	Si	363	1	Seguimiento	EXTREMIDADES	350
+Paciente 182	2	4	M	2	No	54	5	Diagnostico	EXTREMIDADES	45
+Paciente 183	2	  1 / 4	M	1	Si	173	6	Seguimiento	EXTREMIDADES	165
+Paciente 184	2	 1 / 3 / 4	M	1	Si	262	7	Seguimiento	EXTREMIDADES	255
+Paciente 185	2	 1 / 3 / 4	M	1	Si	96	23	Seguimiento	EXTREMIDADES	105
+Paciente 186	2	 1 / 3 / 4	M	2	No	48	41	Diagnostico	EXTREMIDADES	75
+Paciente 187	2	4	M	2	Si	53	66	Seguimiento	EXTREMIDADES	105
+Paciente 188	2	 1 / 3 / 4	T	2	Si	290	74	Diagnostico	EXTREMIDADES	350
+Paciente 189	2	 1 / 3 / 4	M	1	Si	96	83	Seguimiento	EXTREMIDADES	165
+Paciente 190	2	 1 / 3 / 4	T	1	Si	234	130	Seguimiento	EXTREMIDADES	350
+Paciente 191	2	 1 / 3 / 4	M	1	Si	96	268	Seguimiento	EXTREMIDADES	350
+Paciente 192	2	3	M	2	Si	89	290	Seguimiento	EXTREMIDADES	365
+Paciente 193	2	4	M	2	Si	53	311	Seguimiento	EXTREMIDADES	350
+Paciente 198	2	4	M	2	Si	325	-296	Diagnostico	EXTREMIDADES	15
+Paciente 199	2	 1 / 3 / 4	M	2	Si	594	-230	Diagnostico	EXTREMIDADES	350
+Paciente 200	2	4	M	2	Si	587	-223	Diagnostico	EXTREMIDADES	350
+Paciente 201	2	4	M	1	Si	392	-213	Diagnostico	EXTREMIDADES	165
+Paciente 202	2	4	M	2	Si	388	-209	Diagnostico	EXTREMIDADES	165
+Paciente 203	2	 1 / 3 / 4	M	2	Si	556	-192	Diagnostico	EXTREMIDADES	350
+Paciente 204	2	4	M	2	Si	353	-174	Diagnostico	EXTREMIDADES	165
+Paciente 205	2	4	M	2	Si	346	-167	Diagnostico	EXTREMIDADES	165
+Paciente 206	2	 1 / 3 / 4	M	2	Si	276	127	Diagnostico	EXTREMIDADES	135
+Paciente 207	2	 1 / 3 / 4	M	1	Si	195	106	Diagnostico	EXTREMIDADES	75
+Paciente 208	2	 1 / 3 / 4	M	2	Si	237	88	Diagnostico	EXTREMIDADES	135
+Paciente 209	2	4	T	2	Si	451	87	Seguimiento	EXTREMIDADES	350
+Paciente 210	2	 1 / 3 / 4	M	2	Si	142	53	Diagnostico	EXTREMIDADES	75
+Paciente 211	2	4	M	2	Si	409	45	Diagnostico	EXTREMIDADES	350
+Paciente 212	2	  3 / 4	M	2	Si	215	36	Seguimiento	EXTREMIDADES	165
+Paciente 213	2	  3 / 4	T	2	Si	124	35	Diagnostico	EXTREMIDADES	75
+Paciente 214	2	 1 / 3 / 4	M	2	Si	395	31	Diagnostico	EXTREMIDADES	350
+Paciente 215	2	 1 / 3 / 4	M	2	Si	381	17	Diagnostico	EXTREMIDADES	350
+Paciente 216	2	 1 / 3 / 4	M	1	Si	381	17	Diagnostico	EXTREMIDADES	350
+Paciente 217	2	  3 / 4	M	2	Si	195	16	Seguimiento	EXTREMIDADES	165
+Paciente 218	2	 1 / 3 / 4	M	2	No	194	15	Diagnostico	EXTREMIDADES	165
+Paciente 219	2	 1 / 3 / 4	M	1	Si	374	10	Diagnostico	EXTREMIDADES	350
+Paciente 220	2	 1 / 3 / 4	T	1	No	95	6	Diagnostico	EXTREMIDADES	75
+Paciente 221	2	4	M	2	No	144	5	Diagnostico	EXTREMIDADES	135
+Paciente 222	2	 1 / 3 / 4	M	2	No	82	7	Seguimiento	EXTREMIDADES	75
+Paciente 223	2	  1 / 4	M	2	Si	255	14	Diagnostico	EXTREMIDADES	255
+Paciente 224	2	 1 / 3 / 4	T	1	Si	94	25	Diagnostico	EXTREMIDADES	105
+Paciente 225	2	 1 / 3 / 4	M	2	Si	237	32	Diagnostico	EXTREMIDADES	255
+Paciente 226	2	 1 / 3 / 4	M	2	No	53	36	Seguimiento	EXTREMIDADES	75
+Paciente 227	2	 1 / 3 / 4	M	2	Si	73	46	Diagnostico	EXTREMIDADES	105
+Paciente 228	2	4	T	1	Si	124	55	Diagnostico	EXTREMIDADES	165
+Paciente 229	2	  3 / 4	M	2	Si	307	57	Diagnostico	EXTREMIDADES	350
+Paciente 230	2	4	M	1	No	115	64	Diagnostico	EXTREMIDADES	165
+Paciente 231	2	4	M	2	Si	115	64	Diagnostico	EXTREMIDADES	165
+Paciente 232	2	4	M	2	Si	53	66	Seguimiento	EXTREMIDADES	105
+Paciente 233	2	 1 / 3 / 4	T	1	Si	104	75	Diagnostico	EXTREMIDADES	165
+Paciente 234	2	 1 / 3 / 4	M	1	Si	97	82	Diagnostico	EXTREMIDADES	165
+Paciente 235	2	 1 / 3 / 4	M	2	No	34	85	Diagnostico	EXTREMIDADES	105
+Paciente 236	2	4	M	2	Si	276	88	Diagnostico	EXTREMIDADES	350
+Paciente 237	2	 1 / 3 / 4	M	2	Si	88	91	Seguimiento	EXTREMIDADES	165
+Paciente 238	2	 1 / 3 / 4	M	2	No	83	96	Seguimiento	EXTREMIDADES	165
+Paciente 239	2	 1 / 3 / 4	M	2	No	83	96	Diagnostico	EXTREMIDADES	165
+Paciente 240	2	 1 / 3 / 4	M	2	No	82	97	Diagnostico	EXTREMIDADES	165
+Paciente 241	2	 1 / 3 / 4	M	2	No	82	97	Seguimiento	EXTREMIDADES	165
+Paciente 242	2	 1 / 3 / 4	M	2	No	82	97	Seguimiento	EXTREMIDADES	165
+Paciente 243	2	 1 / 3 / 4	M	2	Si	79	100	Diagnostico	EXTREMIDADES	165
+Paciente 244	2	4	M	1	Si	255	109	Diagnostico	EXTREMIDADES	350
+Paciente 245	2	3	T	2	Si	150	119	Diagnostico	EXTREMIDADES	255
+Paciente 246	2	 1 / 3 / 4	M	2	No	54	125	Diagnostico	EXTREMIDADES	165
+Paciente 247	2	 1 / 3 / 4	M	2	Si	229	135	Seguimiento	EXTREMIDADES	350
+Paciente 248	2	3	T	2	Si	223	141	Diagnostico	EXTREMIDADES	350
+Paciente 249	2	4	M	2	Si	223	141	Diagnostico	EXTREMIDADES	350
+Paciente 250	2	 1 / 3 / 4	M	2	No	208	156	Diagnostico	EXTREMIDADES	350
+Paciente 251	2	4	M	2	No	208	156	Diagnostico	EXTREMIDADES	350
+Paciente 252	2	 1 / 3 / 4	M	2	No	208	156	Diagnostico	EXTREMIDADES	350
+Paciente 253	2	 1 / 3 / 4	M	2	No	201	163	Seguimiento	EXTREMIDADES	350
+Paciente 254	2	 1 / 3 / 4	T	1	Si	195	169	Diagnostico	EXTREMIDADES	350
+Paciente 255	2	3	T	2	Si	188	176	Diagnostico	EXTREMIDADES	350
+Paciente 256	2	4	M	1	Si	171	193	Diagnostico	EXTREMIDADES	350
+Paciente 257	2	 1 / 3 / 4	M	2	Si	131	233	Seguimiento	EXTREMIDADES	350
+Paciente 258	2	4	M	2	Si	32	237	Diagnostico	EXTREMIDADES	255
+Paciente 259	2	3	M	2	Si	104	260	Diagnostico	EXTREMIDADES	350
+Paciente 260	2	 1 / 3 / 4	M	1	Si	97	267	Diagnostico	EXTREMIDADES	350
+Paciente 261	2	 1 / 3 / 4	M	1	Si	96	268	Diagnostico	EXTREMIDADES	350
+Paciente 262	2	4	M	2	Si	32	332	Diagnostico	EXTREMIDADES	350
+Paciente 263	2	 1 / 3 / 4	M	2	Si	30	334	Seguimiento	EXTREMIDADES	350
+Paciente 264	2	 1 / 3 / 4	M	2	No	201	343	Diagnostico	EXTREMIDADES	530
+Paciente 272	2	  3 / 4	M	3	Si	34	5	Seguimiento	 ABDOMEN Y PELVIS	15
+Paciente 273	2	  3 / 4	M	3	Si	67	112	Seguimiento	 ABDOMEN Y PELVIS	165
+Paciente 275	3	4	T	1	No	111	82	Diagnostico	TORAX Y MAMA	15
+Paciente 276	3	 1 / 3 / 4	M	2	No	131	72	Diagnostico	TORAX Y MAMA	45
+Paciente 277	3	4	M	2	No	129	20	Seguimiento	TORAX Y MAMA	135
+Paciente 278	3	4	M	2	No	128	21	Diagnostico	TORAX Y MAMA	135
+Paciente 279	3	 1 / 3 / 4	M	2	No	143	36	Diagnostico	TORAX Y MAMA	165
+Paciente 280	3	 1 / 3 / 4	M	1	No	97	82	Seguimiento	TORAX Y MAMA	165
+Paciente 284	3	4	M	2	Si	262	102	Seguimiento	EXTREMIDADES	350
+Paciente 285	3	 1 / 3 / 4	M	2	No	264	-205	Seguimiento	EXTREMIDADES	45
+Paciente 286	3	3	T	2	No	40	11	Diagnostico	EXTREMIDADES	15
+Paciente 287	3	 1 / 3 / 4	M	1	Si	354	375	Seguimiento	COLUMNA	715
+Paciente 288	3	 1 / 3 / 4	T	1	No	46	17	Diagnostico	COLUMNA	15
+Paciente 289	3	 1 / 3 / 4	T	1	No	87	92	Diagnostico	COLUMNA	165
+Paciente 291	3	3	M	2	Si	458	-189	Seguimiento	EXTREMIDADES	255
+Paciente 292	3	 1 / 3 / 4	T	1	No	97	68	Diagnostico	EXTREMIDADES	15
+Paciente 293	3	 1 / 3 / 4	T	1	No	115	56	Seguimiento	EXTREMIDADES	45
+Paciente 294	3	 1 / 3 / 4	T	2	Si	262	102	Diagnostico	EXTREMIDADES	350
+Paciente 295	3	 1 / 3 / 4	T	1	No	93	86	Seguimiento	EXTREMIDADES	0
+Paciente 296	3	 1 / 3 / 4	T	1	No	89	60	Diagnostico	EXTREMIDADES	15
+Paciente 297	3	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 298	3	4	M	1	Si	307	57	Diagnostico	TORAX Y MAMA	350
+Paciente 299	3	 1 / 3 / 4	M	1	No	387	-268	Diagnostico	EXTREMIDADES	105
+Paciente 300	3	 1 / 3	M	1	No	109	102	Seguimiento	EXTREMIDADES	0
+Paciente 301	3	 1 / 3 / 4	M	2	No	123	64	Seguimiento	EXTREMIDADES	45
+Paciente 302	3	 1 / 3 / 4	T	2	No	130	41	Seguimiento	EXTREMIDADES	75
+Paciente 303	3	 1 / 3 / 4	T	1	No	130	41	Seguimiento	EXTREMIDADES	75
+Paciente 304	3	3	M	2	No	95	36	Seguimiento	EXTREMIDADES	45
+Paciente 305	3	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 306	3	 1 / 3 / 4	M	2	No	123	4	Seguimiento	EXTREMIDADES	105
+Paciente 307	3	 1 / 3 / 4	T	1	No	53	66	Diagnostico	EXTREMIDADES	105
+Paciente 308	3	 1 / 3 / 4	M	2	No	137	227	Seguimiento	EXTREMIDADES	350
+Paciente 310	3	3	M	2	No	363	-304	Diagnostico	EXTREMIDADES	45
+Paciente 311	3	3	M	2	No	359	-270	Diagnostico	EXTREMIDADES	75
+Paciente 312	3	 1 / 3 / 4	M	1	No	282	-193	Diagnostico	EXTREMIDADES	75
+Paciente 313	3	 1 / 3 / 4	M	2	No	264	-175	Diagnostico	EXTREMIDADES	75
+Paciente 314	3	 1 / 3	M	2	No	240	151	Diagnostico	EXTREMIDADES	75
+Paciente 315	3	 1 / 3 / 4	M	2	No	116	87	Diagnostico	EXTREMIDADES	15
+Paciente 316	3	 1 / 3 / 4	T	1	No	142	53	Diagnostico	EXTREMIDADES	75
+Paciente 317	3	 1 / 3 / 4	T	1	No	116	27	Diagnostico	EXTREMIDADES	75
+Paciente 318	3	3	T	1	No	172	23	Diagnostico	EXTREMIDADES	135
+Paciente 319	3	3	M	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 320	3	3	T	1	No	95	6	Diagnostico	EXTREMIDADES	75
+Paciente 321	3	3	T	1	No	88	1	Diagnostico	EXTREMIDADES	75
+Paciente 322	3	3	T	2	No	88	1	Diagnostico	EXTREMIDADES	75
+Paciente 323	3	3	T	1	No	28	1	Diagnostico	EXTREMIDADES	15
+Paciente 324	3	3	T	1	No	34	25	Diagnostico	EXTREMIDADES	45
+Paciente 325	3	3	T	1	No	33	26	Diagnostico	EXTREMIDADES	45
+Paciente 326	3	3	T	1	No	137	42	Diagnostico	EXTREMIDADES	165
+Paciente 327	3	3	T	2	No	26	63	Seguimiento	EXTREMIDADES	75
+Paciente 328	3	 1 / 3 / 4	T	1	No	254	110	Seguimiento	EXTREMIDADES	350
+Paciente 331	3	4	M	2	No	108	71	Diagnostico	EXTREMIDADES	165
+Paciente 332	3	 1 / 3 / 4	M	2	No	565	-296	Diagnostico	EXTREMIDADES	255
+Paciente 333	3	 1 / 3 / 4	M	1	No	173	114	Diagnostico	EXTREMIDADES	45
+Paciente 336	3	 1 / 3 / 4	M	2	Si	587	-498	Diagnostico	EXTREMIDADES	75
+Paciente 337	3	3	M	2	No	331	-302	Seguimiento	EXTREMIDADES	15
+Paciente 338	3	3	M	2	No	214	-185	Diagnostico	EXTREMIDADES	15
+Paciente 339	3	3	M	2	No	129	115	Diagnostico	EXTREMIDADES	0
+Paciente 340	3	3	M	2	No	129	70	Diagnostico	EXTREMIDADES	45
+Paciente 341	3	3	T	2	No	149	60	Seguimiento	EXTREMIDADES	75
+Paciente 342	3	4	M	2	No	131	42	Diagnostico	EXTREMIDADES	75
+Paciente 343	3	  3 / 4	T	2	No	124	35	Seguimiento	EXTREMIDADES	75
+Paciente 344	3	 1 / 3 / 4	M	2	Si	248	116	Seguimiento	EXTREMIDADES	350
+Paciente 345	3	3	T	2	No	241	123	Diagnostico	EXTREMIDADES	350
+Paciente 346	3	3	M	2	Si	242	-183	Diagnostico	EXTREMIDADES	45
+Paciente 347	3	 1 / 3 / 4	M	2	No	423	-244	Seguimiento	EXTREMIDADES	165
+Paciente 348	3	 1 / 3 / 4	M	2	Si	131	117	Diagnostico	 ABDOMEN Y PELVIS	0
+Paciente 349	3	  3 / 4	T	2	No	195	16	Diagnostico	 ABDOMEN Y PELVIS	165
+Paciente 350	3	3	M	2	No	121	32	Diagnostico	 ABDOMEN Y PELVIS	75
+Paciente 358	4	 1 / 3 / 4	M	2	No	200	81	Diagnostico	EXTREMIDADES	105
+Paciente 359	4	 1 / 3 / 4	M	2	No	130	11	Seguimiento	EXTREMIDADES	105
+Paciente 360	4	 1 / 3 / 4	T	2	No	96	7	Seguimiento	EXTREMIDADES	75
+Paciente 362	4	3	M	2	No	223	-194	Diagnostico	EXTREMIDADES	15
+Paciente 363	4	 1 / 3 / 4	M	1	No	317	-198	Diagnostico	EXTREMIDADES	105
+Paciente 364	4	 1 / 3 / 4	M	1	No	86	66	Seguimiento	EXTREMIDADES	6
+Paciente 365	4	3	T	1	No	151	32	Diagnostico	EXTREMIDADES	105
+Paciente 366	4	 1 / 3 / 4	T	1	No	151	32	Seguimiento	EXTREMIDADES	105
+Paciente 367	4	 1 / 3 / 4	T	1	No	88	91	Seguimiento	EXTREMIDADES	165
+Paciente 368	4	 1 / 3 / 4	M	2	No	123	146	Seguimiento	EXTREMIDADES	255
+Paciente 369	4	3	M	1	No	362	-273	Diagnostico	EXTREMIDADES	75
+Paciente 370	4	 1 / 3 / 4	T	1	No	171	82	Diagnostico	EXTREMIDADES	75
+Paciente 371	4	3	T	1	No	179	30	Diagnostico	EXTREMIDADES	135
+Paciente 372	4	 1 / 3 / 4	T	1	No	179	30	Diagnostico	EXTREMIDADES	135
+Paciente 373	4	 1 / 3 / 4	T	1	No	116	27	Diagnostico	EXTREMIDADES	75
+Paciente 374	4	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 375	4	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 376	4	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 377	4	 1 / 3 / 4	T	2	No	102	13	Diagnostico	EXTREMIDADES	75
+Paciente 378	4	 1 / 3 / 4	T	2	No	102	13	Diagnostico	EXTREMIDADES	75
+Paciente 379	4	 1 / 3 / 4	T	1	No	102	13	Diagnostico	EXTREMIDADES	75
+Paciente 380	4	 1 / 3 / 4	T	1	No	88	1	Diagnostico	EXTREMIDADES	75
+Paciente 381	4	 1 / 3 / 4	T	1	No	26	63	Diagnostico	EXTREMIDADES	75
+Paciente 382	4	3	T	2	No	25	64	Diagnostico	EXTREMIDADES	75
+Paciente 383	4	 1 / 3 / 4	T	1	No	88	91	Diagnostico	EXTREMIDADES	165
+Paciente 385	4	 1 / 3 / 4	T	1	No	104	75	Diagnostico	EXTREMIDADES	15
+Paciente 386	4	 1 / 3 / 4	T	1	No	26	3	Seguimiento	EXTREMIDADES	15
+Paciente 387	4	 1 / 3 / 4	T	1	No	94	87	Diagnostico	EXTREMIDADES	0
+Paciente 388	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 389	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 390	4	 1 / 3 / 4	T	1	No	93	64	Diagnostico	EXTREMIDADES	15
+Paciente 391	4	 1 / 3 / 4	T	1	No	87	58	Seguimiento	EXTREMIDADES	15
+Paciente 392	4	 1 / 3 / 4	T	1	No	125	36	Diagnostico	EXTREMIDADES	75
+Paciente 393	4	 1 / 3 / 4	T	1	No	213	34	Diagnostico	EXTREMIDADES	165
+Paciente 394	4	 1 / 3 / 4	M	1	No	86	27	Diagnostico	EXTREMIDADES	45
+Paciente 395	4	 1 / 3 / 4	T	1	No	86	27	Seguimiento	EXTREMIDADES	45
+Paciente 396	4	 1 / 3 / 4	T	1	No	27	20	Diagnostico	EXTREMIDADES	0
+Paciente 397	4	 1 / 3 / 4	T	1	No	90	61	Diagnostico	EXTREMIDADES	15
+Paciente 398	4	 1 / 3 / 4	T	1	No	87	58	Diagnostico	EXTREMIDADES	15
+Paciente 399	4	 1 / 3 / 4	T	1	No	136	47	Seguimiento	EXTREMIDADES	75
+Paciente 400	4	 1 / 3 / 4	T	1	No	131	42	Diagnostico	EXTREMIDADES	75
+Paciente 401	4	 1 / 3 / 4	T	1	No	135	16	Seguimiento	EXTREMIDADES	105
+Paciente 402	4	 1 / 3 / 4	T	1	No	93	4	Diagnostico	EXTREMIDADES	75
+Paciente 403	4	 1 / 3 / 4	T	1	No	51	38	Diagnostico	EXTREMIDADES	75
+Paciente 404	4	 1 / 3 / 4	T	1	No	39	50	Diagnostico	EXTREMIDADES	75
+Paciente 405	4	 1 / 3 / 4	T	1	No	30	59	Seguimiento	EXTREMIDADES	75
+Paciente 406	4	 1 / 3 / 4	T	1	No	38	111	Seguimiento	EXTREMIDADES	135
+Paciente 407	4	 1 / 3 / 4	T	1	No	34	115	Seguimiento	EXTREMIDADES	135
+Paciente 408	4	 1 / 3 / 4	T	1	No	48	131	Seguimiento	EXTREMIDADES	165
+Paciente 409	4	 1 / 3 / 4	T	1	No	102	82	Diagnostico	EXTREMIDADES	6
+Paciente 410	4	 1 / 3 / 4	T	1	No	104	75	Diagnostico	EXTREMIDADES	15
+Paciente 411	4	 1 / 3 / 4	T	1	No	94	74	Diagnostico	EXTREMIDADES	6
+Paciente 412	4	 1 / 3 / 4	T	1	No	103	74	Diagnostico	EXTREMIDADES	15
+Paciente 413	4	 1 / 3 / 4	T	1	No	102	73	Diagnostico	EXTREMIDADES	15
+Paciente 414	4	 1 / 3 / 4	T	1	No	102	73	Diagnostico	EXTREMIDADES	15
+Paciente 415	4	 1 / 3 / 4	T	1	No	102	73	Diagnostico	EXTREMIDADES	15
+Paciente 416	4	 1 / 3 / 4	T	1	No	101	72	Diagnostico	EXTREMIDADES	15
+Paciente 417	4	 1 / 3 / 4	T	1	No	95	66	Diagnostico	EXTREMIDADES	15
+Paciente 418	4	 1 / 3 / 4	T	1	No	95	66	Diagnostico	EXTREMIDADES	15
+Paciente 419	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 420	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 421	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 422	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 423	4	 1 / 3 / 4	T	1	No	90	61	Diagnostico	EXTREMIDADES	15
+Paciente 424	4	 1 / 3 / 4	T	1	No	89	60	Diagnostico	EXTREMIDADES	15
+Paciente 425	4	 1 / 3 / 4	T	1	No	88	59	Diagnostico	EXTREMIDADES	15
+Paciente 426	4	 1 / 3 / 4	T	1	No	88	59	Diagnostico	EXTREMIDADES	15
+Paciente 427	4	 1 / 3 / 4	T	1	No	110	51	Diagnostico	EXTREMIDADES	45
+Paciente 428	4	 1 / 3 / 4	T	1	No	108	49	Diagnostico	EXTREMIDADES	45
+Paciente 429	4	 1 / 3 / 4	T	1	No	137	48	Diagnostico	EXTREMIDADES	75
+Paciente 430	4	 1 / 3 / 4	T	1	No	136	47	Seguimiento	EXTREMIDADES	75
+Paciente 431	4	 1 / 3 / 4	T	1	No	135	46	Seguimiento	EXTREMIDADES	75
+Paciente 432	4	 1 / 3 / 4	T	1	No	135	46	Diagnostico	EXTREMIDADES	75
+Paciente 433	4	 1 / 3 / 4	T	1	No	135	46	Diagnostico	EXTREMIDADES	75
+Paciente 434	4	 1 / 3 / 4	T	1	No	135	46	Seguimiento	EXTREMIDADES	75
+Paciente 435	4	 1 / 3 / 4	T	1	No	103	44	Diagnostico	EXTREMIDADES	45
+Paciente 436	4	 1 / 3 / 4	T	1	No	132	43	Diagnostico	EXTREMIDADES	75
+Paciente 437	4	 1 / 3 / 4	T	1	No	132	43	Diagnostico	EXTREMIDADES	75
+Paciente 438	4	 1 / 3 / 4	T	1	No	132	43	Diagnostico	EXTREMIDADES	75
+Paciente 439	4	 1 / 3 / 4	T	1	No	131	42	Diagnostico	EXTREMIDADES	75
+Paciente 440	4	 1 / 3 / 4	T	1	No	131	42	Seguimiento	EXTREMIDADES	75
+Paciente 441	4	 1 / 3 / 4	T	1	No	101	42	Diagnostico	EXTREMIDADES	45
+Paciente 442	4	 1 / 3 / 4	T	1	No	100	41	Diagnostico	EXTREMIDADES	45
+Paciente 443	4	 1 / 3 / 4	T	1	No	130	41	Diagnostico	EXTREMIDADES	75
+Paciente 444	4	 1 / 3 / 4	T	1	No	130	41	Diagnostico	EXTREMIDADES	75
+Paciente 445	4	 1 / 3 / 4	T	1	No	129	40	Diagnostico	EXTREMIDADES	75
+Paciente 446	4	 1 / 3 / 4	T	1	No	128	39	Diagnostico	EXTREMIDADES	75
+Paciente 447	4	4	T	1	No	95	39	Seguimiento	EXTREMIDADES	42
+Paciente 448	4	 1 / 3 / 4	T	1	No	95	36	Diagnostico	EXTREMIDADES	45
+Paciente 449	4	 1 / 3 / 4	T	1	No	95	36	Diagnostico	EXTREMIDADES	45
+Paciente 450	4	 1 / 3 / 4	T	1	No	94	35	Diagnostico	EXTREMIDADES	45
+Paciente 451	4	 1 / 3 / 4	T	1	No	94	35	Diagnostico	EXTREMIDADES	45
+Paciente 452	4	 1 / 3 / 4	T	1	No	123	34	Diagnostico	EXTREMIDADES	75
+Paciente 453	4	 1 / 3 / 4	T	1	No	123	34	Diagnostico	EXTREMIDADES	75
+Paciente 454	4	 1 / 3 / 4	T	1	No	122	33	Diagnostico	EXTREMIDADES	75
+Paciente 455	4	 1 / 3 / 4	T	1	No	122	33	Diagnostico	EXTREMIDADES	75
+Paciente 456	4	 1 / 3 / 4	T	1	No	121	32	Diagnostico	EXTREMIDADES	75
+Paciente 457	4	 1 / 3 / 4	T	1	No	121	32	Diagnostico	EXTREMIDADES	75
+Paciente 458	4	 1 / 3 / 4	T	1	No	90	31	Diagnostico	EXTREMIDADES	45
+Paciente 459	4	 1 / 3 / 4	T	1	No	118	29	Seguimiento	EXTREMIDADES	75
+Paciente 460	4	 1 / 3 / 4	T	1	No	178	29	Diagnostico	EXTREMIDADES	135
+Paciente 461	4	 1 / 3 / 4	T	1	No	117	28	Diagnostico	EXTREMIDADES	75
+Paciente 462	4	 1 / 3 / 4	T	1	No	117	28	Diagnostico	EXTREMIDADES	75
+Paciente 463	4	 1 / 3 / 4	T	1	No	87	28	Diagnostico	EXTREMIDADES	45
+Paciente 464	4	 1 / 3 / 4	T	1	No	116	27	Diagnostico	EXTREMIDADES	75
+Paciente 465	4	 1 / 3 / 4	T	1	No	115	26	Diagnostico	EXTREMIDADES	75
+Paciente 466	4	 1 / 3 / 4	T	1	No	114	25	Diagnostico	EXTREMIDADES	75
+Paciente 467	4	 1 / 3 / 4	T	1	No	53	24	Diagnostico	EXTREMIDADES	15
+Paciente 468	4	 1 / 3 / 4	T	1	No	142	23	Diagnostico	EXTREMIDADES	105
+Paciente 469	4	 1 / 3 / 4	T	1	No	142	23	Diagnostico	EXTREMIDADES	105
+Paciente 470	4	 1 / 3 / 4	T	1	No	142	23	Seguimiento	EXTREMIDADES	105
+Paciente 471	4	 1 / 3 / 4	T	1	No	111	22	Diagnostico	EXTREMIDADES	75
+Paciente 472	4	 1 / 3 / 4	T	1	No	111	22	Diagnostico	EXTREMIDADES	75
+Paciente 473	4	 1 / 3 / 4	T	1	No	110	21	Diagnostico	EXTREMIDADES	75
+Paciente 474	4	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 475	4	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 476	4	 1 / 3 / 4	T	1	No	109	20	Diagnostico	EXTREMIDADES	75
+Paciente 477	4	 1 / 3 / 4	T	1	No	109	20	Seguimiento	EXTREMIDADES	75
+Paciente 478	4	 1 / 3 / 4	T	1	No	107	18	Seguimiento	EXTREMIDADES	75
+Paciente 479	4	 1 / 3 / 4	T	1	No	136	17	Seguimiento	EXTREMIDADES	105
+Paciente 480	4	 1 / 3 / 4	T	1	No	136	17	Seguimiento	EXTREMIDADES	105
+Paciente 481	4	 1 / 3 / 4	T	1	No	104	15	Diagnostico	EXTREMIDADES	75
+Paciente 482	4	 1 / 3 / 4	T	1	No	104	15	Diagnostico	EXTREMIDADES	75
+Paciente 483	4	 1 / 3 / 4	T	1	No	103	14	Diagnostico	EXTREMIDADES	75
+Paciente 484	4	 1 / 3 / 4	T	1	No	103	14	Diagnostico	EXTREMIDADES	75
+Paciente 485	4	 1 / 3 / 4	T	1	No	33	13	Seguimiento	EXTREMIDADES	6
+Paciente 486	4	 1 / 3 / 4	T	1	No	102	13	Diagnostico	EXTREMIDADES	75
+Paciente 487	4	 1 / 3 / 4	T	1	No	102	13	Diagnostico	EXTREMIDADES	75
+Paciente 488	4	 1 / 3 / 4	T	1	No	25	11	Diagnostico	EXTREMIDADES	0
+Paciente 489	4	 1 / 3 / 4	T	1	No	100	11	Seguimiento	EXTREMIDADES	75
+Paciente 490	4	 1 / 3 / 4	T	1	No	68	9	Diagnostico	EXTREMIDADES	45
+Paciente 491	4	 1 / 3 / 4	T	1	No	67	8	Diagnostico	EXTREMIDADES	45
+Paciente 492	4	 1 / 3 / 4	T	1	No	95	6	Seguimiento	EXTREMIDADES	75
+Paciente 493	4	 1 / 3 / 4	T	1	No	95	6	Diagnostico	EXTREMIDADES	75
+Paciente 494	4	 1 / 3 / 4	T	1	No	95	6	Diagnostico	EXTREMIDADES	75
+Paciente 495	4	 1 / 3 / 4	T	1	No	93	4	Diagnostico	EXTREMIDADES	75
+Paciente 496	4	 1 / 3 / 4	T	1	No	123	4	Seguimiento	EXTREMIDADES	105
+Paciente 497	4	 1 / 3 / 4	T	1	No	90	1	Diagnostico	EXTREMIDADES	75
+Paciente 498	4	 1 / 3 / 4	T	1	No	90	1	Diagnostico	EXTREMIDADES	75
+Paciente 499	4	 1 / 3 / 4	T	1	No	90	1	Diagnostico	EXTREMIDADES	75
+Paciente 500	4	 1 / 3 / 4	T	1	No	149	0	Diagnostico	EXTREMIDADES	135
+Paciente 501	4	 1 / 3 / 4	T	1	No	149	0	Diagnostico	EXTREMIDADES	135
+Paciente 502	4	 1 / 3 / 4	T	1	No	88	1	Diagnostico	EXTREMIDADES	75
+Paciente 503	4	 1 / 3 / 4	T	1	No	88	1	Diagnostico	EXTREMIDADES	75
+Paciente 504	4	 1 / 3 / 4	T	1	No	87	2	Diagnostico	EXTREMIDADES	75
+Paciente 505	4	 1 / 3 / 4	T	1	No	25	4	Diagnostico	EXTREMIDADES	15
+Paciente 506	4	 1 / 3 / 4	T	1	No	25	4	Diagnostico	EXTREMIDADES	15
+Paciente 507	4	 1 / 3 / 4	T	1	No	114	5	Seguimiento	EXTREMIDADES	105
+Paciente 508	4	 1 / 3 / 4	T	1	No	24	5	Diagnostico	EXTREMIDADES	15
+Paciente 509	4	 1 / 3 / 4	T	1	No	24	5	Diagnostico	EXTREMIDADES	15
+Paciente 510	4	 1 / 3 / 4	T	1	No	114	5	Diagnostico	EXTREMIDADES	105
+Paciente 511	4	 1 / 3 / 4	T	1	No	24	5	Diagnostico	EXTREMIDADES	15
+Paciente 512	4	 1 / 3 / 4	T	1	No	114	5	Seguimiento	EXTREMIDADES	105
+Paciente 513	4	 1 / 3 / 4	T	1	No	47	12	Diagnostico	EXTREMIDADES	45
+Paciente 514	4	 1 / 3 / 4	T	1	No	107	12	Diagnostico	EXTREMIDADES	105
+Paciente 515	4	 1 / 3 / 4	T	1	No	135	14	Diagnostico	EXTREMIDADES	135
+Paciente 516	4	 1 / 3 / 4	T	1	No	45	14	Diagnostico	EXTREMIDADES	45
+Paciente 517	4	 1 / 3 / 4	T	1	No	100	19	Seguimiento	EXTREMIDADES	105
+Paciente 518	4	 1 / 3 / 4	T	1	No	38	21	Seguimiento	EXTREMIDADES	45
+Paciente 519	4	 1 / 3 / 4	T	1	No	38	21	Seguimiento	EXTREMIDADES	45
+Paciente 520	4	 1 / 3 / 4	T	1	No	31	28	Diagnostico	EXTREMIDADES	45
+Paciente 521	4	 1 / 3 / 4	T	1	No	90	29	Diagnostico	EXTREMIDADES	105
+Paciente 522	4	 1 / 3 / 4	T	1	No	86	33	Seguimiento	EXTREMIDADES	105
+Paciente 523	4	 1 / 3 / 4	T	1	No	111	38	Diagnostico	EXTREMIDADES	135
+Paciente 524	4	 1 / 3 / 4	T	1	No	107	42	Diagnostico	EXTREMIDADES	135
+Paciente 525	4	 1 / 3 / 4	T	1	No	44	45	Diagnostico	EXTREMIDADES	75
+Paciente 526	4	 1 / 3 / 4	T	1	No	44	45	Diagnostico	EXTREMIDADES	75
+Paciente 527	4	 1 / 3 / 4	T	1	No	44	45	Diagnostico	EXTREMIDADES	75
+Paciente 528	4	 1 / 3 / 4	T	1	No	39	50	Seguimiento	EXTREMIDADES	75
+Paciente 529	4	 1 / 3 / 4	T	1	No	36	53	Diagnostico	EXTREMIDADES	75
+Paciente 530	4	 1 / 3 / 4	T	1	No	30	59	Seguimiento	EXTREMIDADES	75
+Paciente 531	4	 1 / 3 / 4	T	1	No	30	59	Diagnostico	EXTREMIDADES	75
+Paciente 532	4	 1 / 3 / 4	T	1	No	27	62	Diagnostico	EXTREMIDADES	75
+Paciente 533	4	 1 / 3 / 4	T	1	No	25	64	Diagnostico	EXTREMIDADES	75
+Paciente 534	4	 1 / 3 / 4	T	1	No	25	64	Diagnostico	EXTREMIDADES	75
+Paciente 535	4	 1 / 3 / 4	T	1	No	24	65	Seguimiento	EXTREMIDADES	75
+Paciente 536	4	 1 / 3 / 4	T	1	No	107	72	Seguimiento	EXTREMIDADES	165
+Paciente 537	4	 1 / 3 / 4	T	1	No	33	86	Diagnostico	EXTREMIDADES	105
+Paciente 538	4	 1 / 3 / 4	T	1	No	93	86	Diagnostico	EXTREMIDADES	165
+Paciente 539	4	 1 / 3 / 4	T	1	No	25	94	Diagnostico	EXTREMIDADES	105
+Paciente 540	4	 1 / 3 / 4	T	1	No	25	94	Seguimiento	EXTREMIDADES	105
+Paciente 543	4	4	M	2	No	228	-199	Diagnostico	EXTREMIDADES	15
+Paciente 544	4	4	T	1	No	152	3	Seguimiento	EXTREMIDADES	135
+Paciente 545	4	4	T	2	No	104	15	Diagnostico	EXTREMIDADES	75
+Paciente 546	4	4	M	2	No	244	-215	Diagnostico	EXTREMIDADES	15
+Paciente 547	4	 1 / 3 / 4	M	2	No	230	-201	Seguimiento	EXTREMIDADES	15
+Paciente 548	4	4	M	1	No	202	113	Diagnostico	EXTREMIDADES	75
+Paciente 549	4	4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 550	4	4	T	1	No	89	30	Diagnostico	EXTREMIDADES	45
+Paciente 551	4	4	T	1	No	87	28	Diagnostico	EXTREMIDADES	45
+Paciente 552	4	 1 / 3 / 4	T	1	No	39	10	Diagnostico	EXTREMIDADES	15
+Paciente 553	4	4	T	1	No	81	8	Diagnostico	EXTREMIDADES	75
+Paciente 554	4	4	T	1	No	34	25	Diagnostico	EXTREMIDADES	45
+Paciente 555	4	4	T	1	No	136	43	Diagnostico	EXTREMIDADES	165
+Paciente 556	4	4	M	2	No	192	-163	Diagnostico	EXTREMIDADES	15
+Paciente 557	4	4	M	2	No	145	116	Diagnostico	EXTREMIDADES	15
+Paciente 558	4	4	M	2	No	87	58	Diagnostico	EXTREMIDADES	15
+Paciente 559	4	4	M	2	No	94	5	Diagnostico	EXTREMIDADES	75
+Paciente 560	4	4	M	2	No	171	8	Diagnostico	EXTREMIDADES	165
+Paciente 561	4	4	M	2	No	87	92	Diagnostico	EXTREMIDADES	165
+Paciente 562	4	4	T	2	No	192	172	Diagnostico	EXTREMIDADES	350
+Paciente 563	4	4	M	2	No	108	256	Diagnostico	EXTREMIDADES	350
+Paciente 564	4	4	M	2	No	72	292	Diagnostico	EXTREMIDADES	350
+Paciente 565	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 566	4	 1 / 3 / 4	T	1	No	124	65	Diagnostico	EXTREMIDADES	45
+Paciente 567	4	 1 / 3 / 4	T	1	No	89	60	Diagnostico	EXTREMIDADES	15
+Paciente 568	4	 1 / 3 / 4	T	1	No	171	52	Diagnostico	EXTREMIDADES	105
+Paciente 569	4	 1 / 3 / 4	T	1	No	109	50	Diagnostico	EXTREMIDADES	45
+Paciente 570	4	 1 / 3 / 4	T	1	No	220	41	Diagnostico	EXTREMIDADES	165
+Paciente 571	4	 1 / 3 / 4	T	1	No	117	28	Seguimiento	EXTREMIDADES	75
+Paciente 572	4	 1 / 3 / 4	T	1	No	94	87	Diagnostico	EXTREMIDADES	0
+Paciente 573	4	 1 / 3 / 4	T	1	No	94	87	Diagnostico	EXTREMIDADES	0
+Paciente 574	4	 1 / 3 / 4	T	1	No	94	87	Diagnostico	EXTREMIDADES	0
+Paciente 575	4	 1 / 3 / 4	T	1	No	143	84	Diagnostico	EXTREMIDADES	45
+Paciente 576	4	 1 / 3 / 4	T	1	No	109	80	Diagnostico	EXTREMIDADES	15
+Paciente 577	4	 1 / 3 / 4	T	1	No	87	80	Diagnostico	EXTREMIDADES	0
+Paciente 578	4	 1 / 3 / 4	T	1	No	83	76	Diagnostico	EXTREMIDADES	0
+Paciente 579	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 580	4	 1 / 3 / 4	T	1	No	124	65	Seguimiento	EXTREMIDADES	45
+Paciente 581	4	 1 / 3 / 4	T	1	No	94	65	Diagnostico	EXTREMIDADES	15
+Paciente 582	4	 1 / 3 / 4	T	1	No	93	64	Diagnostico	EXTREMIDADES	15
+Paciente 583	4	 1 / 3 / 4	T	1	No	88	59	Diagnostico	EXTREMIDADES	15
+Paciente 584	4	 1 / 3 / 4	T	1	No	117	58	Diagnostico	EXTREMIDADES	45
+Paciente 585	4	 1 / 3 / 4	T	1	No	81	52	Diagnostico	EXTREMIDADES	15
+Paciente 586	4	 1 / 3 / 4	T	1	No	109	50	Diagnostico	EXTREMIDADES	45
+Paciente 587	4	 1 / 3 / 4	T	1	No	108	49	Diagnostico	EXTREMIDADES	45
+Paciente 588	4	 1 / 3 / 4	T	1	No	108	49	Diagnostico	EXTREMIDADES	45
+Paciente 589	4	 1 / 3 / 4	T	1	No	107	48	Diagnostico	EXTREMIDADES	45
+Paciente 590	4	 1 / 3 / 4	T	1	No	107	48	Seguimiento	EXTREMIDADES	45
+Paciente 591	4	 1 / 3 / 4	T	1	No	136	47	Diagnostico	EXTREMIDADES	75
+Paciente 592	4	 1 / 3 / 4	T	1	No	54	47	Diagnostico	EXTREMIDADES	0
+Paciente 593	4	 1 / 3 / 4	T	1	No	136	47	Seguimiento	EXTREMIDADES	75
+Paciente 594	4	 1 / 3 / 4	T	1	No	73	44	Diagnostico	EXTREMIDADES	15
+Paciente 595	4	 1 / 3 / 4	T	1	No	102	43	Diagnostico	EXTREMIDADES	45
+Paciente 596	4	 1 / 3 / 4	T	1	No	125	36	Diagnostico	EXTREMIDADES	75
+Paciente 597	4	 1 / 3 / 4	T	1	No	121	32	Diagnostico	EXTREMIDADES	75
+Paciente 598	4	 1 / 3 / 4	T	1	No	89	30	Diagnostico	EXTREMIDADES	45
+Paciente 599	4	 1 / 3 / 4	T	1	No	118	29	Diagnostico	EXTREMIDADES	75
+Paciente 600	4	 1 / 3 / 4	T	1	No	118	29	Diagnostico	EXTREMIDADES	75
+Paciente 601	4	 1 / 3 / 4	T	1	No	88	29	Diagnostico	EXTREMIDADES	45
+Paciente 602	4	 1 / 3 / 4	T	1	No	117	28	Seguimiento	EXTREMIDADES	75
+Paciente 603	4	 1 / 3 / 4	T	1	No	34	27	Seguimiento	EXTREMIDADES	0
+Paciente 604	4	 1 / 3 / 4	T	1	No	34	27	Seguimiento	EXTREMIDADES	0
+Paciente 605	4	 1 / 3 / 4	T	1	No	39	25	Diagnostico	EXTREMIDADES	0
+Paciente 606	4	 1 / 3 / 4	T	1	No	111	22	Diagnostico	EXTREMIDADES	75
+Paciente 607	4	 1 / 3 / 4	T	1	No	111	22	Diagnostico	EXTREMIDADES	75
+Paciente 608	4	 1 / 3 / 4	T	1	No	111	22	Diagnostico	EXTREMIDADES	75
+Paciente 609	4	 1 / 3 / 4	T	1	No	110	21	Diagnostico	EXTREMIDADES	75
+Paciente 610	4	 1 / 3 / 4	T	1	No	200	21	Diagnostico	EXTREMIDADES	165
+Paciente 611	4	 1 / 3 / 4	T	1	No	108	19	Diagnostico	EXTREMIDADES	75
+Paciente 612	4	 1 / 3 / 4	T	1	No	26	19	Diagnostico	EXTREMIDADES	0
+Paciente 613	4	 1 / 3 / 4	T	1	No	47	18	Diagnostico	EXTREMIDADES	15
+Paciente 614	4	 1 / 3 / 4	T	1	No	32	18	Diagnostico	EXTREMIDADES	0
+Paciente 615	4	 1 / 3 / 4	T	1	No	136	17	Diagnostico	EXTREMIDADES	105
+Paciente 616	4	 1 / 3 / 4	T	1	No	101	12	Seguimiento	EXTREMIDADES	75
+Paciente 617	4	 1 / 3 / 4	T	1	No	100	11	Diagnostico	EXTREMIDADES	75
+Paciente 618	4	 1 / 3 / 4	T	1	No	129	10	Diagnostico	EXTREMIDADES	105
+Paciente 619	4	 1 / 3 / 4	T	1	No	187	8	Diagnostico	EXTREMIDADES	165
+Paciente 620	4	 1 / 3 / 4	T	1	No	95	6	Diagnostico	EXTREMIDADES	75
+Paciente 621	4	 1 / 3 / 4	T	1	No	54	3	Diagnostico	EXTREMIDADES	37
+Paciente 622	4	 1 / 3 / 4	T	1	No	32	3	Diagnostico	EXTREMIDADES	15
+Paciente 623	4	 1 / 3 / 4	T	1	No	89	0	Diagnostico	EXTREMIDADES	75
+Paciente 624	4	 1 / 3 / 4	T	1	No	88	1	Diagnostico	EXTREMIDADES	75
+Paciente 625	4	 1 / 3 / 4	T	1	No	178	1	Diagnostico	EXTREMIDADES	165
+Paciente 626	4	 1 / 3 / 4	T	1	No	87	2	Diagnostico	EXTREMIDADES	75
+Paciente 627	4	 1 / 3 / 4	T	1	No	26	3	Diagnostico	EXTREMIDADES	15
+Paciente 628	4	 1 / 3 / 4	T	1	No	136	13	Seguimiento	EXTREMIDADES	135
+Paciente 629	4	 1 / 3 / 4	T	1	No	74	15	Diagnostico	EXTREMIDADES	75
+Paciente 630	4	 1 / 3 / 4	T	1	No	122	27	Diagnostico	EXTREMIDADES	135
+Paciente 631	4	 1 / 3 / 4	T	1	No	115	34	Diagnostico	EXTREMIDADES	135
+Paciente 632	4	 1 / 3 / 4	T	1	No	25	34	Diagnostico	EXTREMIDADES	45
+Paciente 633	4	 1 / 3 / 4	T	1	No	143	36	Seguimiento	EXTREMIDADES	165
+Paciente 634	4	 1 / 3 / 4	T	1	No	39	50	Diagnostico	EXTREMIDADES	75
+Paciente 635	4	 1 / 3 / 4	T	1	No	39	50	Seguimiento	EXTREMIDADES	75
+Paciente 636	4	 1 / 3 / 4	T	1	No	32	57	Diagnostico	EXTREMIDADES	75
+Paciente 637	4	 1 / 3 / 4	T	1	No	32	57	Diagnostico	EXTREMIDADES	75
+Paciente 638	4	 1 / 3 / 4	T	1	No	61	58	Diagnostico	EXTREMIDADES	105
+Paciente 639	4	 1 / 3 / 4	T	1	No	30	59	Diagnostico	EXTREMIDADES	75
+Paciente 640	4	 1 / 3 / 4	T	1	No	110	69	Diagnostico	EXTREMIDADES	165
+Paciente 641	4	 1 / 3 / 4	T	1	No	108	71	Diagnostico	EXTREMIDADES	165
+Paciente 642	4	 1 / 3 / 4	T	1	No	108	71	Seguimiento	EXTREMIDADES	165
+Paciente 643	4	 1 / 3 / 4	T	1	No	101	78	Seguimiento	EXTREMIDADES	165
+Paciente 644	4	 1 / 3 / 4	T	1	No	101	78	Seguimiento	EXTREMIDADES	165
+Paciente 645	4	 1 / 3 / 4	T	1	No	95	84	Diagnostico	EXTREMIDADES	165
+Paciente 646	4	 1 / 3 / 4	T	1	No	122	242	Seguimiento	EXTREMIDADES	350
+Paciente 655	4	 1 / 3 / 4	T	1	No	173	84	Seguimiento	EXTREMIDADES	75
+Paciente 656	4	 1 / 3 / 4	T	1	No	94	35	Diagnostico	EXTREMIDADES	45
+Paciente 657	4	 1 / 3 / 4	M	2	No	268	-179	Seguimiento	EXTREMIDADES	75
+Paciente 658	4	 1 / 3 / 4	M	2	No	227	138	Diagnostico	EXTREMIDADES	75
+Paciente 659	4	 1 / 3 / 4	T	1	No	220	41	Diagnostico	EXTREMIDADES	165
+Paciente 660	4	 1 / 3 / 4	T	1	No	124	35	Diagnostico	EXTREMIDADES	75
+Paciente 661	4	 1 / 3 / 4	M	2	No	201	163	Seguimiento	EXTREMIDADES	350
+Paciente 663	4	4	T	1	No	108	19	Diagnostico	EXTREMIDADES	75
+Paciente 664	4	4	T	1	No	136	17	Diagnostico	EXTREMIDADES	105
+Paciente 665	4	4	T	1	No	122	3	Diagnostico	EXTREMIDADES	105
+Paciente 666	4	3	M	1	No	178	1	Diagnostico	EXTREMIDADES	165
+Paciente 667	4	4	T	1	No	122	57	Diagnostico	EXTREMIDADES	165
+Paciente 668	4	4	T	1	No	84	95	Diagnostico	EXTREMIDADES	165
+Paciente 669	4	4	T	1	No	84	95	Diagnostico	EXTREMIDADES	165
+Paciente 670	4	 1 / 3 / 4	M	2	No	563	-504	Diagnostico	EXTREMIDADES	45
+Paciente 671	4	 1 / 3 / 4	M	2	No	472	-457	Seguimiento	EXTREMIDADES	1
+Paciente 672	4	 1 / 3 / 4	M	1	No	458	-369	Diagnostico	EXTREMIDADES	75
+Paciente 673	4		T	1	No	325	146	Diagnostico	EXTREMIDADES	165
+Paciente 674	4	3	M	2	No	220	131	Seguimiento	EXTREMIDADES	75
+Paciente 675	4	 1 / 3 / 4	M	2	No	115	86	Diagnostico	EXTREMIDADES	15
+Paciente 676	4	 1 / 3 / 4	T	2	No	110	21	Seguimiento	EXTREMIDADES	75
+Paciente 677	4	3	T	1	No	188	9	Diagnostico	EXTREMIDADES	165
+Paciente 678	4	  3 / 4	T	1	No	46	13	Diagnostico	EXTREMIDADES	45
+Paciente 679	4	 1 / 3 / 4	M	2	No	264	-175	Diagnostico	EXTREMIDADES	75
+Paciente 680	4	 1 / 3	T	1	No	90	31	Diagnostico	EXTREMIDADES	45
+Paciente 681	4	 1 / 3 / 4	T	2	No	115	26	Diagnostico	EXTREMIDADES	75
+Paciente 682	4	  1 / 4	T	1	No	180	1	Diagnostico	EXTREMIDADES	165
+Paciente 683	4	1	T	1	No	150	29	Diagnostico	EXTREMIDADES	165
+Paciente 684	4	 1 / 3 / 4	T	2	No	47	42	Seguimiento	EXTREMIDADES	75
+Paciente 685	4	 1 / 3 / 4	T	1	No	33	86	Diagnostico	EXTREMIDADES	105
+Paciente 686	4	 1 / 3 / 4	T	1	No	82	97	Diagnostico	EXTREMIDADES	165
+Paciente 698	4	 1 / 3 / 4	M	1	No	559	-470	Diagnostico	EXTREMIDADES	75
+Paciente 723	4	 1 / 3 / 4	M	1	No	641	-634	Diagnostico	EXTREMIDADES	0
+Paciente 724	4	 1 / 3 / 4	M	1	No	580	-573	Diagnostico	EXTREMIDADES	0
+Paciente 725	4	 1 / 3 / 4	M	1	No	571	-512	Diagnostico	EXTREMIDADES	45
+Paciente 726	4	 1 / 3 / 4	M	1	No	517	-510	Diagnostico	EXTREMIDADES	0
+Paciente 727	4	 1 / 3 / 4	M	1	No	496	-489	Diagnostico	EXTREMIDADES	0
+Paciente 728	4	 1 / 3 / 4	M	1	No	514	-485	Diagnostico	EXTREMIDADES	15
+Paciente 729	4	 1 / 3 / 4	M	1	No	563	-474	Diagnostico	EXTREMIDADES	75
+Paciente 730	4	 1 / 3 / 4	M	1	No	458	-429	Diagnostico	EXTREMIDADES	15
+Paciente 731	4	 1 / 3 / 4	M	1	No	592	-413	Diagnostico	EXTREMIDADES	165
+Paciente 732	4	 1 / 3 / 4	M	1	No	468	-409	Diagnostico	EXTREMIDADES	45
+Paciente 733	4	 1 / 3 / 4	M	1	No	419	-390	Diagnostico	EXTREMIDADES	15
+Paciente 734	4	 1 / 3 / 4	M	1	No	391	-384	Diagnostico	EXTREMIDADES	0
+Paciente 735	4	 1 / 3 / 4	M	1	No	384	-377	Diagnostico	EXTREMIDADES	0
+Paciente 736	4	 1 / 3 / 4	M	1	No	433	-374	Diagnostico	EXTREMIDADES	45
+Paciente 737	4	 1 / 3 / 4	M	1	No	370	-363	Diagnostico	EXTREMIDADES	0
+Paciente 738	4	 1 / 3 / 4	M	1	No	451	-362	Diagnostico	EXTREMIDADES	75
+Paciente 739	4	 1 / 3 / 4	M	1	No	346	-317	Diagnostico	EXTREMIDADES	15
+Paciente 740	4	 1 / 3 / 4	M	1	No	321	-314	Diagnostico	EXTREMIDADES	0
+Paciente 741	4	 1 / 3 / 4	M	1	No	319	-290	Diagnostico	EXTREMIDADES	15
+Paciente 742	4	 1 / 3 / 4	M	1	No	339	-280	Diagnostico	EXTREMIDADES	45
+Paciente 743	4	 1 / 3 / 4	M	1	No	286	-279	Diagnostico	EXTREMIDADES	0
+Paciente 744	4	 1 / 3 / 4	M	1	No	325	-266	Diagnostico	EXTREMIDADES	45
+Paciente 745	4	 1 / 3 / 4	M	1	No	286	-257	Diagnostico	EXTREMIDADES	15
+Paciente 746	4	 1 / 3 / 4	M	1	No	426	-247	Diagnostico	EXTREMIDADES	165
+Paciente 747	4	 1 / 3 / 4	M	1	No	270	-241	Diagnostico	EXTREMIDADES	15
+Paciente 748	4	 1 / 3 / 4	M	1	No	290	-231	Diagnostico	EXTREMIDADES	45
+Paciente 749	4	 1 / 3 / 4	M	1	No	284	-225	Diagnostico	EXTREMIDADES	45
+Paciente 750	4	 1 / 3 / 4	M	1	No	214	-185	Diagnostico	EXTREMIDADES	15
+Paciente 751	4	 1 / 3 / 4	M	1	No	346	-167	Seguimiento	EXTREMIDADES	165
+Paciente 752	4	 1 / 3 / 4	M	1	No	334	155	Seguimiento	EXTREMIDADES	145
+Paciente 753	4	 1 / 3 / 4	M	2	No	173	144	Diagnostico	EXTREMIDADES	15
+Paciente 754	4	 1 / 3 / 4	M	1	No	143	136	Diagnostico	EXTREMIDADES	0
+Paciente 755	4	 1 / 3 / 4	M	1	No	230	111	Diagnostico	EXTREMIDADES	105
+Paciente 756	4	 1 / 3 / 4	M	1	No	152	93	Diagnostico	EXTREMIDADES	45
+Paciente 757	4	 1 / 3 / 4	M	1	No	104	75	Diagnostico	EXTREMIDADES	15
+Paciente 758	4	 1 / 3 / 4	M	1	No	111	52	Diagnostico	EXTREMIDADES	45
+Paciente 759	4	 1 / 3 / 4	M	1	No	108	49	Diagnostico	EXTREMIDADES	45
+Paciente 760	4	 1 / 3 / 4	M	1	No	135	46	Diagnostico	EXTREMIDADES	75
+Paciente 761	4	 1 / 3 / 4	M	1	No	122	33	Diagnostico	EXTREMIDADES	75
+Paciente 762	4	 1 / 3 / 4	M	1	No	87	28	Diagnostico	EXTREMIDADES	45
+Paciente 763	4	 1 / 3 / 4	M	1	No	179	0	Diagnostico	EXTREMIDADES	165
+Paciente 764	4	 1 / 3 / 4	M	1	No	86	3	Diagnostico	EXTREMIDADES	75
+Paciente 765	4	 1 / 3 / 4	M	1	No	53	6	Diagnostico	EXTREMIDADES	45
+Paciente 766	4	 1 / 3 / 4	M	1	No	41	18	Diagnostico	EXTREMIDADES	45
+Paciente 767	4	 1 / 3 / 4	M	1	No	115	34	Diagnostico	EXTREMIDADES	135
+Paciente 768	4	 1 / 3 / 4	M	1	No	95	84	Seguimiento	EXTREMIDADES	165
+Paciente 774	4	 1 / 3 / 4	M	1	No	380	-201	Diagnostico	EXTREMIDADES	165

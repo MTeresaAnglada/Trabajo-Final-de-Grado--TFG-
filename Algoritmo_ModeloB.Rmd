@@ -1,0 +1,257 @@
+---
+title: "Algoritmo modelo B"
+author: "Maria Teresa Anglada"
+date: "11/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(kableExtra)
+```
+
+Aquí cogemos la base de datos y ordenamos las solicitudes a partir de la política B mencionada en el TFG.
+
+# DATOS
+
+
+```{r}
+datos <- read.table("datos_6_agosto.txt", sep="\t", header=TRUE)
+str(datos)
+```
+
+```{r, message=FALSE, warning=FALSE}
+datos$PRIORIDAD <- as.factor(datos$PRIORIDAD)
+datos$RESONANCIA <- as.factor(datos$RESONANCIA)
+datos$TURNO <- as.factor(datos$TURNO)
+datos$HUECOS <- as.factor(datos$HUECOS)
+datos$COTMES <- as.factor(datos$COTMES)
+datos$OBJETIVO_VISITA <- as.factor(datos$OBJETIVO_VISITA)
+datos$TIPO_CITA <- as.factor(datos$TIPO_CITA)
+```
+
+Juntamos las prioridad 3 y 4 en una sola:
+
+```{r}
+
+for (i in 1: nrow(datos)){
+  
+  if (datos$PRIORIDAD[i]== "4"){
+     datos$PRIORIDAD[i]= "3"
+  }
+  
+}
+
+
+```
+
+
+
+# CREACIÓN COLAS
+
+Realizaremos las siguientes colas (indicadas con : Prioridad - Turno - Tipo de Resonador). Tenemos 12:
+
+*$Cola_{1}$:P1-Mañanas-R1
+
+*$Cola_{2}$:P1-Mañanas-R3
+
+*$Cola_{3}$:P1-Mañanas-R4
+
+*$Cola_{4}$:P2-Mañanas-R1 
+
+*$Cola_{5}$:P2-Mañanas-R3
+
+*$Cola_{6}$:P2-Mañanas-R4
+
+*$Cola_{7}$:P2-Mañanas o Tardes-R1 
+
+*$Cola_{8}$:P2-Mañanas o Tardes-R3
+
+*$Cola_{9}$:P2-Mañanas o Tardes-R4
+
+*$Cola_{10}$:P3-Mañanas o Tardes-R1
+
+*$Cola_{11}$:P3-Mañanas o Tardes-R3
+
+*$Cola_{12}$:P3-Mañanas o Tardes-R4
+
+
+```{r}
+lambda_1 <- subset(datos, PRIORIDAD == "1"  & (RESONANCIA == "1" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == " 1 / 4"))
+lambda_2 <- subset(datos, PRIORIDAD == "1"  & (RESONANCIA == "3" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))
+lambda_3 <- subset(datos, PRIORIDAD == "1"  & (RESONANCIA == "4" | RESONANCIA == " 1 / 4" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))  
+
+lambda_4 <- subset(datos, PRIORIDAD == "2" & TURNO == "M" & ( RESONANCIA == "1" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == " 1 / 4"))
+lambda_5 <- subset(datos, PRIORIDAD == "2"  & TURNO == "M"  & (RESONANCIA == "3" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))
+lambda_6 <- subset(datos, PRIORIDAD == "2"  & TURNO == "M" & (RESONANCIA == "4" | RESONANCIA == " 1 / 4" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))
+
+
+lambda_7 <- subset(datos, PRIORIDAD == "2" & TURNO == "T" & (RESONANCIA == "1" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == " 1 / 4"))
+lambda_8 <- subset(datos, PRIORIDAD == "2"  & TURNO == "T" & (RESONANCIA == "3" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))
+lambda_9 <- subset(datos, PRIORIDAD == "2"  & TURNO == "T" & (RESONANCIA == "4" | RESONANCIA == " 1 / 4" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))
+
+lambda_10 <-subset(datos, PRIORIDAD == "3"  & (RESONANCIA == "1" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == " 1 / 4"))
+lambda_11 <- subset(datos, (PRIORIDAD == "3"| PRIORIDAD == "4")  & (RESONANCIA == "3" | RESONANCIA == " 1 / 3" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))
+lambda_12 <- subset(datos, PRIORIDAD == "3"  & (RESONANCIA == "4" |RESONANCIA == " 1 / 4" | RESONANCIA == " 1 / 3 / 4" | RESONANCIA == "  3 / 4"))
+
+nrow(lambda_1)+nrow(lambda_2)+ nrow(lambda_3)+nrow(lambda_4) +nrow(lambda_5)+nrow(lambda_6) +nrow(lambda_7)+nrow(lambda_8) +nrow(lambda_9) +nrow(lambda_10) +nrow(lambda_11)+nrow(lambda_12)
+
+
+```
+
+# ORDENAMIENTO DENTRO DE CADA COLA
+
+Ahora vamos a ordenar los pacientes que se encuentran dentro de cada cola teniendo en cuenta su `FECHA_CEX` y los `DIAS_PETICION`. Damos un peso del 70% a `FECHA_CEX` y 30% a los `DIAS_PETICION`
+
+```{r}
+indice1=0.7*as.numeric(lambda_1$DIAS_CEX)+0.3*as.numeric(-lambda_1$DIAS_PETICION)
+lambda_1$indice1=indice1
+indice2=0.7*as.numeric(lambda_2$DIAS_CEX)+0.3*as.numeric(-lambda_2$DIAS_PETICION)
+lambda_2$indice2=indice2
+indice3=0.7*as.numeric(lambda_3$DIAS_CEX)+0.3*as.numeric(-lambda_3$DIAS_PETICION)
+lambda_3$indice3=indice3
+indice4=0.7*as.numeric(lambda_4$DIAS_CEX)+0.3*as.numeric(-lambda_4$DIAS_PETICION)
+lambda_4$indice4=indice4
+indice5=0.7*as.numeric(lambda_5$DIAS_CEX)+0.3*as.numeric(-lambda_5$DIAS_PETICION)
+lambda_5$indice5=indice5
+indice6=0.7*as.numeric(lambda_6$DIAS_CEX)+0.3*as.numeric(-lambda_6$DIAS_PETICION)
+lambda_6$indice6=indice6
+indice7=0.7*as.numeric(lambda_7$DIAS_CEX)+0.3*as.numeric(-lambda_7$DIAS_PETICION)
+lambda_7$indice7=indice7
+indice8=0.7*as.numeric(lambda_8$DIAS_CEX)+0.3*as.numeric(-lambda_8$DIAS_PETICION)
+lambda_8$indice8=indice8
+indice9=0.7*as.numeric(lambda_9$DIAS_CEX)+0.3*as.numeric(-lambda_9$DIAS_PETICION)
+lambda_9$indice9=indice9
+indice10=0.7*as.numeric(lambda_10$DIAS_CEX)+0.3*as.numeric(-lambda_10$DIAS_PETICION)
+lambda_10$indice10=indice10
+indice11=0.7*as.numeric(lambda_11$DIAS_CEX)+0.3*as.numeric(-lambda_11$DIAS_PETICION)
+lambda_11$indice11=indice11
+indice12=0.7*as.numeric(lambda_12$DIAS_CEX)+0.3*as.numeric(-lambda_12$DIAS_PETICION)
+lambda_12$indice12=indice12
+
+```
+
+Ponemos en una tabla las variables que nos interesan
+
+```{r}
+df1 <- select(lambda_1,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice1)
+df2 <- select(lambda_2,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice2)
+df3 <- select(lambda_3,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice3)
+df4 <- select(lambda_4,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice4)
+df5 <- select(lambda_5,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice5)
+df6 <- select(lambda_6,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice6)
+df7 <- select(lambda_7,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice7)
+df8 <- select(lambda_8,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice8)
+df9 <- select(lambda_9,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice9)
+df10 <- select(lambda_10,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice10)
+df11 <- select(lambda_11,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice11)
+df12 <- select(lambda_12,ID,PRIORIDAD,RESONANCIA,HUECOS,COTMES,DIAS_CEX,DIAS_PETICION, indice12)
+```
+
+Ordenamos segun el índice 
+
+```{r}
+cola1=arrange(df1,indice1)
+cola2=arrange(df2,indice2)
+cola3=arrange(df3,indice3)
+cola4=arrange(df4,indice4)
+cola5=arrange(df5,indice5)
+cola6=arrange(df6,indice6)
+cola7=arrange(df7,indice7)
+cola8=arrange(df8,indice8)
+cola9=arrange(df9,indice9)
+cola10=arrange(df10,indice10)
+cola11=arrange(df11,indice11)
+cola12=arrange(df12,indice12)
+```
+
+
+Vamos a añadir la columna que nos indica el orden en la cola y en que cola se encuentra. Cambiamos el nombre de la columna indicei por indice. Añadimos la columna Dia_cita que nos dice el dia que va a ser citado (primer dia, segundo, etc) según el cronograma de los radiólogos (nos sirve para después saber cuantos dias quedan para que sea citado el paciente).
+
+```{r}
+
+names(cola1)[8]="indice"
+names(cola2)[8]="indice"
+names(cola3)[8]="indice"
+names(cola4)[8]="indice"
+names(cola5)[8]="indice"
+names(cola6)[8]="indice"
+names(cola7)[8]="indice"
+names(cola8)[8]="indice"
+names(cola9)[8]="indice"
+names(cola10)[8]="indice"
+names(cola11)[8]="indice"
+names(cola12)[8]="indice"
+
+Cola_P1_M_R1= cola1 %>% mutate(Cola = "1") %>% mutate(Dia_cita = 0)
+Cola_P1_M_R3= cola2 %>% mutate(Cola = "2") %>% mutate(Dia_cita = 0)
+Cola_P1_M_R4= cola3 %>% mutate(Cola = "3") %>% mutate(Dia_cita = 0)
+Cola_P2_M_R1= cola4 %>% mutate(Cola = "4") %>% mutate(Dia_cita = 0)
+Cola_P2_M_R3= cola5 %>% mutate(Cola = "5") %>% mutate(Dia_cita = 0)
+Cola_P2_M_R4= cola6 %>% mutate(Cola = "6") %>% mutate(Dia_cita = 0)
+Cola_P2_T_R1= cola7 %>% mutate(Cola = "7") %>% mutate(Dia_cita = 0)
+Cola_P2_T_R3= cola8 %>% mutate(Cola = "8") %>% mutate(Dia_cita = 0)
+Cola_P2_T_R4= cola9 %>% mutate(Cola = "9") %>% mutate(Dia_cita = 0)
+Cola_P3_R1= cola10 %>% mutate(Cola = "10") %>% mutate(Dia_cita = 0)
+Cola_P3_R3= cola11 %>% mutate(Cola = "11") %>% mutate(Dia_cita = 0)
+Cola_P3_R4= cola12 %>% mutate(Cola = "11") %>% mutate(Dia_cita = 0)
+```
+
+
+Juntamos todas las solicitudes que sean para el mismo resonador y turno en una tabla. Los pacientes de las colas de prioridad 3 apareceran en los turnos de mañana y tarde y luego se eliminan los repetidos que se atienden mas tarde.
+Nos quedamos con 6 colas.
+
+
+```{r}
+Cola_M_R1= Cola_P1_M_R1 %>% bind_rows(Cola_P2_M_R1) %>% bind_rows(Cola_P3_R1)
+Cola_M_R3= Cola_P1_M_R3 %>% bind_rows(Cola_P2_M_R3) %>% bind_rows(Cola_P3_R3)
+Cola_M_R4= Cola_P1_M_R4 %>% bind_rows(Cola_P2_M_R4) %>% bind_rows(Cola_P3_R4)
+
+Cola_T_R1= Cola_P2_T_R1 %>%  bind_rows(Cola_P3_R1)
+Cola_T_R3= Cola_P2_T_R3 %>%  bind_rows(Cola_P3_R3)
+Cola_T_R4= Cola_P2_T_R4  %>% bind_rows(Cola_P3_R4)
+```
+
+Vemos cuantas solicitudes hay en cada cola
+
+```{r}
+nrow(Cola_M_R1)
+nrow(Cola_T_R1)
+nrow(Cola_M_R3)
+nrow(Cola_T_R3)
+nrow(Cola_M_R4)
+nrow(Cola_T_R4)
+```
+
+Guardamos en csv
+
+```{r}
+write.csv(Cola_M_R1, file="tabla_cola_1.csv")
+write.csv(Cola_T_R1, file="tabla_cola_2.csv")
+write.csv(Cola_M_R3, file="tabla_cola_3.csv")
+write.csv(Cola_T_R3, file="tabla_cola_4.csv")
+write.csv(Cola_M_R4, file="tabla_cola_5.csv")
+write.csv(Cola_T_R4, file="tabla_cola_6.csv")
+
+```
+
+
+Enseñamos como queda el ordenamiento de cada una de las 6 colas:
+
+```{r}
+kable(Cola_M_R1[1:nrow(Cola_M_R1),],caption = "ORDEN DE CITACION RM1_M") %>%
+kable_styling(bootstrap_options = "striped", full_width = F)
+kable(Cola_T_R1[1:nrow(Cola_T_R1),],caption = "ORDEN DE CITACION RM1_T") %>%
+kable_styling(bootstrap_options = "striped", full_width = F)
+kable(Cola_M_R3[1:nrow(Cola_M_R3),],caption = "ORDEN DE CITACION RM3_M") %>%
+kable_styling(bootstrap_options = "striped", full_width = F)
+kable(Cola_T_R3[1:nrow(Cola_T_R3),],caption = "ORDEN DE CITACION RM3_T") %>%
+kable_styling(bootstrap_options = "striped", full_width = F)
+kable(Cola_M_R4[1:nrow(Cola_M_R4),],caption = "ORDEN DE CITACION RM4_M") %>%
+kable_styling(bootstrap_options = "striped", full_width = F)
+kable(Cola_T_R4[1:nrow(Cola_T_R4),],caption = "ORDEN DE CITACION LAMBDA RM4_T") %>%
+kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+

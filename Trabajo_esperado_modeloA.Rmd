@@ -1,0 +1,348 @@
+---
+title: "Trabajo esperado del modelo A"
+author: "Maria Teresa Anglada"
+date: "10/3/2021"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+Leemos las colas
+
+```{r}
+Cola_M_R1=read.csv("Cola_M_R1_modeloA.csv", header=TRUE)
+Cola_T_R1=read.csv("Cola_T_R1_modeloA.csv", header=TRUE)
+Cola_M_R3=read.csv("Cola_M_R3_modeloA.csv", header=TRUE)
+Cola_T_R3=read.csv("Cola_T_R3_modeloA.csv", header=TRUE)
+Cola_M_R4=read.csv("Cola_M_R4_modeloA.csv", header=TRUE)
+Cola_T_R4=read.csv("Cola_T_R4_modeloA.csv", header=TRUE)
+
+```
+
+
+Sea $S_n(\pi)$ días restantes desde la recepción de la base de datos hasta que el paciente $n$ será atendido bajo la política $\pi$ (nuestra variable es DIAS_PARA_SER_ATENDIDO). Queremos calcular $S^{(l)}(\pi)$ distribución del tiempo de espera de cada tipo $l$ de solicitudes desde la recepción de los datos hasta el día de realización de la \acsu{RM} bajo la política $\pi$.
+
+
+Elegimos primero las variables que nos interesan
+
+```{r}
+Cola_M_R1 = Cola_M_R1 %>% select(ID, Prioridad, DIAS_PARA_SER_ATENDIDO)
+Cola_T_R1 = Cola_T_R1 %>% select(ID, Prioridad, DIAS_PARA_SER_ATENDIDO)
+Cola_M_R3 = Cola_M_R3 %>% select(ID, Prioridad, DIAS_PARA_SER_ATENDIDO)
+Cola_T_R3 = Cola_T_R3 %>% select(ID, Prioridad, DIAS_PARA_SER_ATENDIDO)
+Cola_M_R4 = Cola_M_R4 %>% select(ID, Prioridad, DIAS_PARA_SER_ATENDIDO)
+Cola_T_R4 = Cola_T_R4 %>% select(ID, Prioridad, DIAS_PARA_SER_ATENDIDO)
+```
+
+## COLAS RM1 M
+
+
+```{r}
+TTE_RM1_M=0
+```
+
+## COLAS RM1 T
+
+Vamos a calcular $S^{(l)}(\pi)$
+
+```{r}
+S_1 = Cola_T_R1 %>% filter(Prioridad == 1) %>% select(DIAS_PARA_SER_ATENDIDO)
+S_2 = Cola_T_R1 %>% filter(Prioridad == 2) %>% select(DIAS_PARA_SER_ATENDIDO)
+S_3 = Cola_T_R1 %>% filter(Prioridad == 3) %>% select(DIAS_PARA_SER_ATENDIDO)
+
+```
+
+```{r}
+glimpse(S_1)
+glimpse(S_2)
+glimpse(S_3)
+```
+
+```{r}
+ggplot(S_3, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+
+```
+
+```{r}
+S_1_RM1_T=mean(S_1$DIAS_PARA_SER_ATENDIDO)
+S_2_RM1_T=mean(S_2$DIAS_PARA_SER_ATENDIDO)
+S_3_RM1_T=mean(S_3$DIAS_PARA_SER_ATENDIDO)
+S_1_RM1_T
+S_2_RM1_T
+S_3_RM1_T
+
+S_1_RM1_T=0
+S_2_RM1_T=0
+```
+
+
+Como las $\lambda^{(l)}$ calculadas en el Calculos_tasas_llegadas.Rmd son 
+
+```{r}
+lambda1_RM1_T = 0
+lambda2_RM1_T = 0.2727273
+lambda3_RM1_T = 16.40909
+```
+
+El trabajo total esperado de esta cola, se puede calcular como
+
+$$E[T]=\sum_{l=1}^k \lambda^{(l)} E[S^{(l)}(\pi)]$$ 
+
+```{r}
+TTE_RM1_T= lambda1_RM1_T * S_1_RM1_T + lambda2_RM1_T * S_2_RM1_T +lambda3_RM1_T* S_3_RM1_T
+```
+
+Entonces el trabajo total esperado de la cola RM1 T es 
+
+```{r}
+TTE_RM1_T
+```
+
+
+## COLAS RM3 M
+
+Vamos a calcular $S^{(l)}(\pi)$
+
+```{r}
+S_1 = Cola_M_R3 %>% filter(Prioridad == 1)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_2 = Cola_M_R3 %>% filter(Prioridad == 2)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_3 = Cola_M_R3 %>% filter(Prioridad == 3)%>% select(DIAS_PARA_SER_ATENDIDO)
+
+```
+
+```{r}
+glimpse(S_1)
+glimpse(S_2)
+glimpse(S_3)
+```
+
+```{r}
+ggplot(S_1, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+ggplot(S_2, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+ggplot(S_3, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+
+```
+
+```{r}
+S_1_RM3_M=mean(S_1$DIAS_PARA_SER_ATENDIDO)
+S_2_RM3_M=mean(S_2$DIAS_PARA_SER_ATENDIDO)
+S_3_RM3_M=mean(S_3$DIAS_PARA_SER_ATENDIDO)
+S_1_RM3_M
+S_2_RM3_M
+S_3_RM3_M
+
+```
+
+Como las $\lambda^{(l)}$ calculadas en el Calculos_tasas_llegadas.Rmd son 
+
+```{r}
+lambda1_RM3_M = 0.8181818
+lambda2_RM3_M = 2.772727
+lambda3_RM3_M = 17.90909
+```
+
+El trabajo total esperado de esta cola, se puede calcular como
+
+$$E[T]=\sum_{l=1}^k \lambda^{(l)} E[S^{(l)}(\pi)]$$ 
+
+```{r}
+TTE_RM3_M= lambda1_RM3_M * S_1_RM3_M + lambda2_RM3_M * S_2_RM3_M +lambda3_RM3_M* S_3_RM3_M
+```
+
+Entonces el trabajo total esperado de la cola RM3 M es 
+
+```{r}
+TTE_RM3_M
+```
+
+## COLAS RM3 T
+
+Vamos a calcular $S^{(l)}(\pi)$
+
+```{r}
+S_1 = Cola_T_R3 %>% filter(Prioridad == 1)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_2 = Cola_T_R3 %>% filter(Prioridad == 2)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_3 = Cola_T_R3 %>% filter(Prioridad == 3)%>% select(DIAS_PARA_SER_ATENDIDO)
+
+```
+
+
+```{r}
+glimpse(S_1)
+glimpse(S_2)
+glimpse(S_3)
+```
+
+```{r}
+ggplot(S_2, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+ggplot(S_3, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+
+```
+
+```{r}
+S_1_RM3_T=mean(S_1$DIAS_PARA_SER_ATENDIDO)
+S_2_RM3_T=mean(S_2$DIAS_PARA_SER_ATENDIDO)
+S_3_RM3_T=mean(S_3$DIAS_PARA_SER_ATENDIDO)
+S_1_RM3_T
+S_2_RM3_T
+S_3_RM3_T
+
+S_1_RM3_T=0
+
+```
+
+
+Como las $\lambda^{(l)}$ calculadas en el Calculos_tasas_llegadas.Rmd son 
+
+```{r}
+lambda1_RM3_T = 0
+lambda2_RM3_T = 0.5909091
+lambda3_RM3_T = 17.90909
+```
+
+El trabajo total esperado de esta cola, se puede calcular como
+
+$$E[T]=\sum_{l=1}^k \lambda^{(l)} E[S^{(l)}(\pi)]$$ 
+```{r}
+TTE_RM3_T= lambda1_RM3_T * S_1_RM3_T + lambda2_RM3_T * S_2_RM3_T +lambda3_RM3_T* S_3_RM3_T
+```
+
+Entonces el trabajo total esperado de la cola RM3 T es 
+
+```{r}
+TTE_RM3_T
+```
+
+
+## COLAS RM4 M
+
+Vamos a calcular $S^{(l)}(\pi)$
+
+```{r}
+S_1 = Cola_M_R4 %>% filter(Prioridad == 1)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_2 = Cola_M_R4 %>% filter(Prioridad == 2)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_3 = Cola_M_R4 %>% filter(Prioridad == 3)%>% select(DIAS_PARA_SER_ATENDIDO)
+
+```
+
+```{r}
+glimpse(S_1)
+glimpse(S_2)
+glimpse(S_3)
+```
+
+```{r}
+ggplot(S_2, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+ggplot(S_3, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+
+```
+
+
+```{r}
+S_1_RM4_M=mean(S_1$DIAS_PARA_SER_ATENDIDO)
+S_2_RM4_M=mean(S_2$DIAS_PARA_SER_ATENDIDO)
+S_3_RM4_M=mean(S_3$DIAS_PARA_SER_ATENDIDO)
+S_1_RM4_M
+S_2_RM4_M
+S_3_RM4_M
+
+
+```
+
+Como las $\lambda^{(l)}$ calculadas en el Calculos_tasas_llegadas.Rmd son 
+
+```{r}
+lambda1_RM4_M = 1
+lambda2_RM4_M = 3.863636
+lambda3_RM4_M = 17.90909
+```
+
+El trabajo total esperado de esta cola, se puede calcular como
+
+$$E[T]=\sum_{l=1}^k \lambda^{(l)} E[S^{(l)}(\pi)]$$
+
+```{r}
+TTE_RM4_M= lambda1_RM4_M * S_1_RM4_M + lambda2_RM4_M * S_2_RM4_M +lambda3_RM4_M* S_3_RM4_M
+```
+
+Entonces el trabajo total esperado de la cola RM4 M es 
+
+```{r}
+TTE_RM4_M
+```
+
+
+
+## COLAS RM4 T
+
+Vamos a calcular $S^{(l)}(\pi)$
+
+```{r}
+S_1 = Cola_T_R4 %>% filter(Prioridad == 1)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_2 = Cola_T_R4 %>% filter(Prioridad == 2)%>% select(DIAS_PARA_SER_ATENDIDO)
+S_3 = Cola_T_R4 %>% filter(Prioridad == 3)%>% select(DIAS_PARA_SER_ATENDIDO)
+
+```
+
+
+```{r}
+glimpse(S_1)
+glimpse(S_2)
+glimpse(S_3)
+```
+
+```{r}
+ggplot(S_2, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+ggplot(S_3, aes(DIAS_PARA_SER_ATENDIDO)) + geom_histogram(fill="steelblue")
+
+```
+
+```{r}
+S_1_RM4_T=mean(S_1$DIAS_PARA_SER_ATENDIDO)
+S_2_RM4_T=mean(S_2$DIAS_PARA_SER_ATENDIDO)
+S_3_RM4_T=mean(S_3$DIAS_PARA_SER_ATENDIDO)
+S_1_RM4_T
+S_2_RM4_T
+S_3_RM4_T
+
+S_1_RM4_T=0
+
+```
+
+
+Como las $\lambda^{(l)}$ calculadas en el Calculos_tasas_llegadas.Rmd son 
+
+```{r}
+lambda1_RM4_T = 0
+lambda2_RM4_T = 0.5454545
+lambda3_RM4_T = 17.90909
+```
+
+El trabajo total esperado de esta cola, se puede calcular como
+
+$$E[T]=\sum_{l=1}^k \lambda^{(l)} E[S^{(l)}(\pi)]$$
+
+
+```{r}
+TTE_RM4_T= lambda1_RM4_T * S_1_RM4_T + lambda2_RM4_T * S_2_RM4_T +lambda3_RM4_T* S_3_RM4_T
+```
+
+Entonces el trabajo total esperado de la cola RM4_T es 
+
+```{r}
+TTE_RM4_T
+```
+
+
+# TRABAJO TOTAL ESPERADO
+
+El trabajo total esperado del modelo A se puede calcular como
+ $$E[T]=\sum_{i=1}^6 \sum_{l=1}^3 \lambda^{(l)}_{i}E[S^{(l)}_{i}(\pi)]$$
+ 
+```{r}
+TTE_RM1_M + TTE_RM1_T + TTE_RM3_M + TTE_RM3_T + TTE_RM4_M + TTE_RM4_T
+```

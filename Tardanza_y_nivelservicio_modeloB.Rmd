@@ -1,0 +1,300 @@
+---
+title: "Calculo de la tardanza y el nivel de servicio del modelo B"
+author: "Maria Teresa Anglada"
+date: "22/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# CALCULOS 
+
+### Metodología
+
+* Consideran que la v.a. número de pacientes que llegan de tipo $i$ sigue una distribución Poisson con parámetro $\lambda_i$ para $i=1, \cdots, I$. 
+
+  + Cada $\lambda_i$ (arrival rate - número medio de este tipo de solicitudes por unidad de tiempo- día - quizás) se puede suponer constante en el tiempo o que cambia cada $d$ días.
+
+  + Se supone que los pacientes dentro de un mismo tipo requieren el mismo número de huecos (number of fractions).
+
+
+* Sistema de colas con  $I$ colas y  $c$ servidores (en nuestro caso los tres resonadores). $\mathcal{I}$ denota el conjunto de tipos de pacientes.
+
+
+
+Leemos las colas
+
+```{r}
+Cola_M_R1=read.csv("Cola_M_R1_modeloB.csv", header=TRUE)
+Cola_T_R1=read.csv("Cola_T_R1_modeloB.csv", header=TRUE)
+Cola_M_R3=read.csv("Cola_M_R3_modeloB.csv", header=TRUE)
+Cola_T_R3=read.csv("Cola_T_R3_modeloB.csv", header=TRUE)
+Cola_M_R4=read.csv("Cola_M_R4_modeloB.csv", header=TRUE)
+Cola_T_R4=read.csv("Cola_T_R4_modeloB.csv", header=TRUE)
+
+```
+
+
+* $A_{i,n}$ denota la fecha de solicitud del paciente $n$ que es del tipo $i$ . (DIAS_PETICION)
+
+
+* $S_{i,n}(π)$ denota la fecha de citación del paciente $n$ de tipo $i$ de acuerdo a la política $\pi$.  (DIAS_PARA_SER_ATENDIDO)
+
+
+* WT denota el tiempo de espera del paciente, bajo la política $\pi$ es: $S_{i,n}+A_{i,n}$.
+ 
+
+```{r}
+
+#guardamos los dias de petición y los dias para ser atendido el paciente y realizamos los calculos
+
+TABLA_1= Cola_M_R1 %>% select(ID,PRIORIDAD,DIAS_PETICION,DIAS_PARA_SER_ATENDIDO) %>% mutate(WT= DIAS_PETICION + DIAS_PARA_SER_ATENDIDO, w_1=0)
+TABLA_2= Cola_T_R1 %>% select(ID,PRIORIDAD,DIAS_PETICION,DIAS_PARA_SER_ATENDIDO) %>% mutate(WT= DIAS_PETICION + DIAS_PARA_SER_ATENDIDO,w_2=0)
+TABLA_3= Cola_M_R3 %>% select(ID,PRIORIDAD,DIAS_PETICION,DIAS_PARA_SER_ATENDIDO) %>% mutate(WT= DIAS_PETICION + DIAS_PARA_SER_ATENDIDO, w_3=0)
+TABLA_4= Cola_T_R3 %>% select(ID,PRIORIDAD,DIAS_PETICION,DIAS_PARA_SER_ATENDIDO) %>% mutate(WT= DIAS_PETICION + DIAS_PARA_SER_ATENDIDO, w_4=0)
+TABLA_5= Cola_M_R4 %>% select(ID,PRIORIDAD,DIAS_PETICION,DIAS_PARA_SER_ATENDIDO) %>% mutate(WT= DIAS_PETICION + DIAS_PARA_SER_ATENDIDO, w_5=0)
+TABLA_6= Cola_T_R4 %>% select(ID,PRIORIDAD,DIAS_PETICION,DIAS_PARA_SER_ATENDIDO) %>% mutate(WT= DIAS_PETICION + DIAS_PARA_SER_ATENDIDO, w_6=0)
+
+
+```
+
+
+
+* El WTT (waiting time target) para cada tipo de paciente debemos se denota $w_i$.
+ Según el decreto de demoras  de la P1  son 2 semanas (14 dias), P2 son 3 meses (90 dias) y P3 180 dias.
+ 
+La TABLA_1 esta vacía porque la Cola_M_R1 esta vacía
+ 
+```{r}
+# for(i in 1:nrow(TABLA_1)){
+#   if(TABLA_1$PRIORIDAD[i]=="1"){
+#     w_1[i]=14
+#   }
+#   if(TABLA_1$PRIORIDAD[i]=="2"){
+#     w_1[i]=90
+#   }
+#   if(TABLA_1$PRIORIDAD[i]=="3"){
+#     w_1[i]=180
+#   }
+#   if(TABLA_1$PRIORIDAD[i]=="4"){
+#     w_1[i]=180
+#   }
+# }
+
+for(i in 1:nrow(TABLA_2)){
+  if(TABLA_2$PRIORIDAD[i]=="1"){
+    TABLA_2$w_2[i]=14
+  }
+  if(TABLA_2$PRIORIDAD[i]=="2"){
+    TABLA_2$w_2[i]=90
+  }
+  if(TABLA_2$PRIORIDAD[i]=="3"){
+    TABLA_2$w_2[i]=180
+  }
+  
+}
+
+for(i in 1:nrow(TABLA_3)){
+  if(TABLA_3$PRIORIDAD[i]=="1"){
+    TABLA_3$w_3[i]=14
+  }
+  if(TABLA_3$PRIORIDAD[i]=="2"){
+    TABLA_3$w_3[i]=90
+  }
+  if(TABLA_3$PRIORIDAD[i]=="3"){
+    TABLA_3$w_3[i]=180
+  }
+  
+}
+for(i in 1:nrow(TABLA_4)){
+  if(TABLA_4$PRIORIDAD[i]=="1"){
+    TABLA_4$w_4[i]=14
+  }
+  if(TABLA_4$PRIORIDAD[i]=="2"){
+    TABLA_4$w_4[i]=90
+  }
+  if(TABLA_4$PRIORIDAD[i]=="3"){
+    TABLA_4$w_4[i]=180
+  }
+  
+}
+for(i in 1:nrow(TABLA_5)){
+  if(TABLA_5$PRIORIDAD[i]=="1"){
+    TABLA_5$w_5[i]=14
+  }
+  if(TABLA_5$PRIORIDAD[i]=="2"){
+    TABLA_5$w_5[i]=90
+  }
+  if(TABLA_5$PRIORIDAD[i]=="3"){
+    TABLA_5$w_5[i]=180
+  }
+  
+}
+for(i in 1:nrow(TABLA_6)){
+  if(TABLA_6$PRIORIDAD[i]=="1"){
+    TABLA_6$w_6[i]=14
+  }
+  if(TABLA_6$PRIORIDAD[i]=="2"){
+    TABLA_6$w_6[i]=90
+  }
+  if(TABLA_6$PRIORIDAD[i]=="3"){
+    TABLA_6$w_6[i]=180
+  }
+  
+}
+
+
+```
+ 
+
+
+* Medidas de rendimiento:
+  
+  + For every scheduled patient, his/her **tardiness** is calculated as 
+$$T_{i,n}(\pi) = max \{S_{i,n}(\pi) + A_{i,n} − w_i, 0\}$$ 
+
+  + **Service level** is defined as $SL_i(\pi) = ℙ\{S_{i,n} + A_{i,n} \leq w_i\}$. 
+
+
+```{r}
+
+
+# TABLA_1 = TABLA_1 %>% mutate(TARDANZA= WT-w_1) %>% mutate(Probabilidad= 0)
+TABLA_2 = TABLA_2 %>% mutate(TARDANZA= WT-w_2) %>% mutate(Probabilidad= 0)
+TABLA_3 = TABLA_3 %>% mutate(TARDANZA= WT-w_3) %>% mutate(Probabilidad= 0)
+TABLA_4 = TABLA_4 %>% mutate(TARDANZA= WT-w_4) %>% mutate(Probabilidad= 0)
+TABLA_5 = TABLA_5 %>% mutate(TARDANZA= WT-w_5) %>% mutate(Probabilidad= 0)
+TABLA_6 = TABLA_6 %>% mutate(TARDANZA= WT-w_6) %>% mutate(Probabilidad= 0)
+
+```
+
+```{r}
+# for(i in 1:nrow(TABLA_1)){
+#   if(TABLA_1$TARDANZA[i]<=0){
+#     TABLA_1$TARDANZA[i]=0
+#     TABLA_2$Probabilidad[i]=1
+#   }
+# }
+
+for(i in 1:nrow(TABLA_2)){
+  if(TABLA_2$TARDANZA[i]<=0){
+    TABLA_2$TARDANZA[i]=0
+    TABLA_2$Probabilidad[i]=1
+  }
+}
+
+for(i in 1:nrow(TABLA_3)){
+  if(TABLA_3$TARDANZA[i]<=0){
+    TABLA_3$TARDANZA[i]=0
+    TABLA_3$Probabilidad[i]=1
+  }
+}
+
+for(i in 1:nrow(TABLA_4)){
+  if(TABLA_4$TARDANZA[i]<=0){
+    TABLA_4$TARDANZA[i]=0
+    TABLA_4$Probabilidad[i]=1
+  }
+}
+
+for(i in 1:nrow(TABLA_5)){
+  if(TABLA_5$TARDANZA[i]<=0){
+    TABLA_5$TARDANZA[i]=0
+    TABLA_5$Probabilidad[i]=1
+  }
+}
+for(i in 1:nrow(TABLA_6)){
+  if(TABLA_6$TARDANZA[i]<=0){
+    TABLA_6$TARDANZA[i]=0
+    TABLA_6$Probabilidad[i]=1
+  }
+}
+
+
+```
+
+```{r}
+# glimpse(TABLA_1) # Cola R1 M
+glimpse(TABLA_2) # Cola R1 T
+glimpse(TABLA_3) # Cola R3 M
+glimpse(TABLA_4) # Cola R3 T
+glimpse(TABLA_5) # Cola R4 M
+glimpse(TABLA_6) # Cola R4 T
+```
+
+**If the system is stable with homogeneous arrival rates**, the expected tardiness of type $i$ patients under policy $\pi$ can be measured by
+$$E[T_i(\pi)]= lim_{N \rightarrow \infty } \frac{\sum_{n=1}^{N} T_{i,n}(\pi)}{N}$$ 
+They used simulation to approximate the value, setting $N$ large enough.
+
+```{r}
+#Tardanza por prioridad
+
+#P1_RM1_M=filter(TABLA_1, PRIORIDAD=="1")
+#P2_RM1_M=filter(TABLA_1, PRIORIDAD=="2")
+#P3_RM1_M=filter(TABLA_1, PRIORIDAD=="3")
+P1_RM1_T=filter(TABLA_2, PRIORIDAD=="1")
+P2_RM1_T=filter(TABLA_2, PRIORIDAD=="2")
+P3_RM1_T=filter(TABLA_2, PRIORIDAD=="3")
+
+P1_RM3_M=filter(TABLA_3, PRIORIDAD=="1")
+P2_RM3_M=filter(TABLA_3, PRIORIDAD=="2")
+P3_RM3_M=filter(TABLA_3, PRIORIDAD=="3")
+P1_RM3_T=filter(TABLA_4, PRIORIDAD=="1")
+P2_RM3_T=filter(TABLA_4, PRIORIDAD=="2")
+P3_RM3_T=filter(TABLA_4, PRIORIDAD=="3")
+
+P1_RM4_M=filter(TABLA_5, PRIORIDAD=="1")
+P2_RM4_M=filter(TABLA_5, PRIORIDAD=="2")
+P3_RM4_M=filter(TABLA_5, PRIORIDAD=="3")
+P1_RM4_T=filter(TABLA_6, PRIORIDAD=="1")
+P2_RM4_T=filter(TABLA_6, PRIORIDAD=="2")
+P3_RM4_T=filter(TABLA_6, PRIORIDAD=="3")
+
+mean(P1_RM1_T$TARDANZA)
+mean(P2_RM1_T$TARDANZA)
+mean(P3_RM1_T$TARDANZA)
+mean(P1_RM3_M$TARDANZA)
+mean(P2_RM3_M$TARDANZA)
+mean(P3_RM3_M$TARDANZA)
+mean(P1_RM3_T$TARDANZA)
+mean(P2_RM3_T$TARDANZA)
+mean(P3_RM3_T$TARDANZA)
+mean(P1_RM4_M$TARDANZA)
+mean(P2_RM4_M$TARDANZA)
+mean(P3_RM4_M$TARDANZA)
+mean(P1_RM4_T$TARDANZA)
+mean(P2_RM4_T$TARDANZA)
+mean(P3_RM4_T$TARDANZA)
+
+```
+
+
+```{r}
+#mean(TABLA_1$TARDANZA) # Cola R1 M
+mean(TABLA_2$TARDANZA) # Cola R1 T
+mean(TABLA_3$TARDANZA) # Cola R3 M
+mean(TABLA_4$TARDANZA) # Cola R3 T
+mean(TABLA_5$TARDANZA) # Cola R4 M
+mean(TABLA_6$TARDANZA) # Cola R4 T
+```
+
+
+
+  + **Service level** 
+        $$ SL_i(\pi) = lim_{N \rightarrow \infty } \frac{\sum_{n=1}^{N} \bf{1}_{(S_{i,n} + A_{i,n} \leq w_i)}}{N} $$
+  
+  
+```{r}
+#mean(TABLA_1$Probabilidad) # Cola R1 M
+mean(TABLA_2$Probabilidad) # Cola R1 T
+mean(TABLA_3$Probabilidad) # Cola R3 M
+mean(TABLA_4$Probabilidad) # Cola R3 T
+mean(TABLA_5$Probabilidad) # Cola R4 M
+mean(TABLA_6$Probabilidad) # Cola R4 T
+```
+
+
+

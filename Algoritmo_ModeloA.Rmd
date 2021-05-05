@@ -1,0 +1,236 @@
+---
+title: "Algoritmo modelo A"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+---
+
+
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+library(dplyr)
+library(kableExtra)
+library(reshape2)
+```
+
+
+Aquí cogemos la base de datos y ordenamos las solicitudes a partir de la política A mencionada en el TFG.
+
+##  Índice para la prioridad 
+
+Construiremos un índice para ordenar las solicitudes basándonos en las variables: `PRIORIDAD`, `DIAS_CEX` y `DIAS_PETICION`. Para ello comenzamos por categorizar las variables que vienen en días.
+
+
+### Re-codificación de las variables en días según deciles
+
+
+#### `DIAS_CEX`
+
+```{r, echo=FALSE}
+datos <- read.table("datos_6_agosto.txt", sep="\t", header=TRUE) # Para limpiar 
+
+# Variables que se involucran en el ranking
+datos2 <- select(datos, ID, PRIORIDAD,HUECOS,DIAS_PETICION, DIAS_CEX, PROP_DESDE_PETI)
+```
+
+Vamos a considerar P4 como P3
+
+```{r}
+for (i in 1: nrow(datos2)){
+  
+  if (datos2$PRIORIDAD[i]== "4"){
+     datos2$PRIORIDAD[i]= "3"
+  }
+  
+}
+```
+
+```{r}
+quantile(datos2$DIAS_CEX, probs=seq(0,1,0.1))
+```
+
+Así, la variable queda re-codificada de la siguiente forma:
+
+```{r}
+datos2$DIAS_CEX[(datos2$DIAS_CEX >= -634) & (datos2$DIAS_CEX <= -194)] <- -1000
+datos2$DIAS_CEX[(datos2$DIAS_CEX > -194) & (datos2$DIAS_CEX <= 5)] <- 2
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 5) & (datos2$DIAS_CEX <= 15)] <- 3
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 15) & (datos2$DIAS_CEX <= 25)] <- 4
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 25) & (datos2$DIAS_CEX <= 35)] <- 5
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 35) & (datos2$DIAS_CEX <= 47)] <- 6
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 47) & (datos2$DIAS_CEX <= 63)] <- 7
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 63) & (datos2$DIAS_CEX <= 82)] <- 8
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 82) & (datos2$DIAS_CEX <= 115)] <- 9
+datos2$DIAS_CEX[(datos2$DIAS_CEX > 115) & (datos2$DIAS_CEX <= 633)] <- 10
+datos2$DIAS_CEX[datos2$DIAS_CEX== -1000] <-1
+datos2$DIAS_CEX <- as.factor(datos2$DIAS_CEX)
+table(datos2$PRIORIDAD,datos2$DIAS_CEX)
+```
+
+Revisamos el ordenamiento
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+#table(datos2$DIAS_CEX,datos2$PRIORIDAD)
+
+etiqueta <- c("[-634,-194)","[-194,5)","[5,15)","[15,25)","[25,35)", "[35,47)","[47,63)","[63,82)","[82,115)", "[115, 633)")
+etiqueta <- factor(etiqueta, levels=c("[-634,-194)","[-194,5)","[5,15)","[15,25)","[25,35)", "[35,47)","[47,63)","[63,82)","[82,115)", "[115, 633)"))
+prioridad_1 <- c(1,5,1,1,1,0,2,2,1,8)
+prioridad_2 <- c(10,12,10,6,5,7,5,7,19,27)
+prioridad_3 <- c(46,49,39,48,53,47,45,50,34,20)
+
+data <- data.frame(etiqueta,prioridad_1,prioridad_2,prioridad_3)
+
+
+fig <- melt(data, id.vars='etiqueta') %>% plot_ly( x= ~etiqueta, y= ~value, type='bar',
+                                      color= ~variable,
+                                      colors=c(prioridad_1='#ff9999', prioridad_2='#ffd11a',prioridad_3='#00e600'))
+
+fig <- fig %>% layout(title ='',
+                xaxis = list(title ='Días para la Consulta Externa'),
+                yaxis = list(title = 'Conteo de solicitudes',
+                             range = c(0,50)))
+fig
+```
+
+
+#### `DIAS_PETICION`
+
+```{r}
+quantile(datos2$DIAS_PETICION, probs=seq(0,1,0.1))
+```
+
+Así, la variable queda re-codificada de la siguiente forma:
+
+```{r}
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION >= 24) & (datos2$DIAS_PETICION <= 39)] <- 10
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 39) & (datos2$DIAS_PETICION <= 86)] <- 9
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 86) & (datos2$DIAS_PETICION <= 94)] <- 8
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 94) & (datos2$DIAS_PETICION <= 102)] <- 7
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 102) & (datos2$DIAS_PETICION <= 111)] <- 6
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 111) & (datos2$DIAS_PETICION <= 129)] <- 5
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 129) & (datos2$DIAS_PETICION <= 149)] <- 4
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 149) & (datos2$DIAS_PETICION <= 215)] <- 3
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 215) & (datos2$DIAS_PETICION <= 346)] <- 2
+datos2$DIAS_PETICION[(datos2$DIAS_PETICION > 346) & (datos2$DIAS_PETICION <= 641)] <- 1
+
+datos2$DIAS_PETICION <- as.factor(datos2$DIAS_PETICION)
+table(datos2$PRIORIDAD, datos2$DIAS_PETICION)
+
+```
+
+Revisamos el ordenamiento
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+#table(datos2$DIAS_PETICION,datos2$PRIORIDAD)
+
+etiqueta <- c("[24,39)","[39,86)","[86,94)","[94,102)","[102,111)","[111,129)", "[129,149)","[149,215)","[215,346)","[346,641)")
+etiqueta <- factor(etiqueta, levels=c("[24,39)","[39,86)","[86,94)","[94,102)","[102,111)","[111,129)", "[129,149)","[149,215)","[215,346)","[346,641)"))
+
+prioridad_1 <- c(6,4,0,0,1,2,3,3,1,2)
+prioridad_2 <- c(5,17,3,9,2,4,6,22,19,21)
+prioridad_3 <- c(31,37,31,46,52,53,35,62,35,49)
+
+data <- data.frame(etiqueta,prioridad_1,prioridad_2,prioridad_3)
+
+fig <- melt(data, id.vars='etiqueta') %>% plot_ly( x= ~etiqueta, 
+                                                        y= ~value, type='bar',
+                                                        color= ~variable,
+                                                        colors=c(prioridad_1='#ff9999', prioridad_2='#ffd11a',prioridad_3='#00e600'))
+
+fig <- fig %>% layout(title ='',
+                xaxis = list(title ='Días desde la petición', tickangle = 45),
+                yaxis = list(title = 'Conteo de solicitudes',
+                             range = c(0,60)))
+fig
+```
+
+
+
+### 2.2. Construcción del índice para la prioridad
+
+```{r}
+indice=0.7*as.numeric(datos2$PRIORIDAD)+0.2*as.numeric(datos2$DIAS_CEX)+0.1*as.numeric(datos2$DIAS_PETICION)
+summary(indice)
+datos2$indice=indice
+```
+
+Veamos la consistencia del índice con la `PRIORIDAD`
+
+```{r,echo=FALSE}
+fig <- plot_ly(datos2, x= ~PRIORIDAD, y = ~indice, text = ~ID, type="box", boxpoints = "all", color = ~as.factor(PRIORIDAD), colors = c("palevioletred1","orange2","mediumseagreen","dodgerblue1"), showlegend=FALSE)
+
+fig <- fig %>% layout(title ='',
+                xaxis = list(title ='Prioridad'),
+                yaxis = list(title = 'Índice'))
+fig
+
+```
+
+Tenemos una **posible inconsistencia con la prioridad 3**, así que veamos lo que está ocurriendo con las otras variables involucradas en el cálculo del índice.
+
+
+Veamos la consistencia del índice con `DIAS_CEX`
+
+```{r,echo=FALSE}
+fig <- plot_ly(datos2, x= ~DIAS_CEX, y = ~indice, text = ~ID, type="box", 
+               boxpoints = "all", color = ~as.factor(PRIORIDAD), colors = c("palevioletred1","orange2","mediumseagreen","dodgerblue1"), showlegend=TRUE)
+
+fig <- fig %>% layout(title ='',
+                xaxis = list(title ='Días para la Consulta Externa'),
+                yaxis = list(title = 'Índice'))
+fig
+
+```
+
+Veamos la consistencia del índice con `DIAS_PETICION`
+
+```{r,echo=FALSE}
+fig <- plot_ly(datos2, x= ~DIAS_PETICION, y = ~indice, text = ~ID, type="box", 
+               boxpoints = "all", color = ~as.factor(PRIORIDAD), colors = c("palevioletred1","orange2","mediumseagreen","dodgerblue1"), showlegend=TRUE)
+
+fig <- fig %>% layout(title ='',
+                xaxis = list(title ='Días desde la petición'),
+                yaxis = list(title = 'Índice'))
+fig
+
+```
+
+De acuerdo a los dos gráficos anteriores el índice es consistente.
+
+
+
+## 3. Tabla con el orden de citación de las solicitudes a día 6 de agosto de 2020
+
+
+
+```{r}
+ID=datos2$ID
+Prioridad=datos2$PRIORIDAD
+Huecos=datos2$HUECOS
+Resonancia=datos$RESONANCIA
+Turno=datos$TURNO
+COTMES=datos$COTMES
+Dias_cex_cat=datos2$DIAS_CEX
+Dias_cex=datos$DIAS_CEX
+Dias_pet_cat=datos2$DIAS_PETICION
+Dias_pet=datos$DIAS_PETICION
+Indice=datos2$indice
+df <- data.frame(ID,Prioridad,Huecos,Resonancia, Turno, COTMES, Dias_cex_cat, Dias_cex,Dias_pet_cat, Dias_pet,Indice)
+orden=arrange(df,indice)
+
+
+write.csv(orden, file="Orden_modeloA.csv")
+```
+
+
+
+
+
+
+
+
+
+
+
